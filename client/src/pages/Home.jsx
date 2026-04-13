@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 import { CartContext } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 import {
@@ -24,8 +24,8 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const [prodRes, catRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/products'),
-          axios.get('http://localhost:5000/api/categories')
+          axiosInstance.get('/api/products'),
+          axiosInstance.get('/api/categories')
         ]);
         setProducts(prodRes.data);
         setCategories(catRes.data);

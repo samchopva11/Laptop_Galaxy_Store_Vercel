@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 import { AuthContext } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import { User, Mail, Save, Key, ShieldCheck, Rocket, Camera, Loader2, Eye, EyeOff } from 'lucide-react';
@@ -59,17 +59,9 @@ const Profile = () => {
 
   const handleUpdate = async () => {
     try {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${user.token}`,
-        },
-      };
-
-      const { data } = await axios.put(
-        'http://localhost:5000/api/users/profile',
-        { name, email, password, avatar },
-        config
+      const { data } = await axiosInstance.put(
+        '/api/users/profile',
+        { name, email, password, avatar }
       );
 
       // Update the local context

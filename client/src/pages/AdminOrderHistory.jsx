@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import Pagination from '../components/Pagination';
@@ -35,8 +35,7 @@ const AdminOrderHistory = () => {
 
   const fetchOrders = async () => {
     try {
-      const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const { data } = await axios.get('http://localhost:5000/api/orders', config);
+      const { data } = await axiosInstance.get('/api/orders');
       setOrders(data);
     } catch (error) {
       console.error(error);
@@ -50,8 +49,7 @@ const AdminOrderHistory = () => {
   const executeReturnOrder = async () => {
     const orderId = confirmReturn.orderId;
     try {
-      const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      await axios.put(`http://localhost:5000/api/orders/${orderId}/status`, { status: 'Trả hàng' }, config);
+      await axiosInstance.put(`/api/orders/${orderId}/status`, { status: 'Trả hàng' });
       showToast('Đã xác nhận trả hàng và hoàn kho thành công!');
       setConfirmReturn({ isOpen: false, orderId: null });
       fetchOrders(); // Tải lại danh sách

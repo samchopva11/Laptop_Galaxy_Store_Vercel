@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Search, Filter, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { CartContext } from '../context/CartContext';
@@ -33,7 +33,7 @@ const Products = () => {
 
   useEffect(() => {
     // Fetch categories for Filter Dropdown
-    axios.get('http://localhost:5000/api/categories').then(({ data }) => setCategories(data)).catch(console.error);
+    axiosInstance.get('/api/categories').then(({ data }) => setCategories(data)).catch(console.error);
   }, []);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const Products = () => {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      let query = `http://localhost:5000/api/products?`;
+      let query = `/api/products?`;
       if (keyword) query += `keyword=${keyword}&`;
       if (category) query += `category=${category}&`;
       if (badge) query += `badge=${badge}&`;
@@ -65,7 +65,7 @@ const Products = () => {
       if (maxPrice) query += `max=${maxPrice}&`;
       query += `page=${page}&limit=9`;
 
-      const { data } = await axios.get(query);
+      const { data } = await axiosInstance.get(query);
 
       if (data.products) {
         setProducts(data.products);

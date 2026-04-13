@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../context/ToastContext';
@@ -35,8 +35,7 @@ const AdminUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      const { data } = await axios.get('http://localhost:5000/api/users', config);
+      const { data } = await axiosInstance.get('/api/users');
       setUsers(data);
     } catch (error) {
       console.error(error);
@@ -72,20 +71,18 @@ const AdminUsers = () => {
   };
 
   const confirmActionExecute = async () => {
-    const config = { headers: { Authorization: `Bearer ${user.token}` } };
-
     try {
       if (confirmAction.type === 'ROLE_TOGGLE') {
         const u = confirmAction.user;
-        await axios.put(`http://localhost:5000/api/users/${u._id}`, { isAdmin: !u.isAdmin }, config);
+        await axiosInstance.put(`/api/users/${u._id}`, { isAdmin: !u.isAdmin });
         showToast(`Đã ${!u.isAdmin ? 'thăng cấp' : 'hạ cấp'} ${u.name} thành công!`);
       } else if (confirmAction.type === 'BLOCK_TOGGLE') {
         const u = confirmAction.user;
-        await axios.put(`http://localhost:5000/api/users/${u._id}`, { isBlocked: !u.isBlocked }, config);
+        await axiosInstance.put(`/api/users/${u._id}`, { isBlocked: !u.isBlocked });
         showToast(`Đã ${!u.isBlocked ? 'vô hiệu hóa' : 'kích hoạt'} ${u.name} thành công!`);
       } else if (confirmAction.type === 'USER_UPDATE') {
         const u = confirmAction.user;
-        await axios.put(`http://localhost:5000/api/users/${u._id}`, confirmAction.data, config);
+        await axiosInstance.put(`/api/users/${u._id}`, confirmAction.data);
         showToast(`Đã cập nhật thông tin ${u.name} thành công!`);
         setEditModal({ isOpen: false, user: null });
       }

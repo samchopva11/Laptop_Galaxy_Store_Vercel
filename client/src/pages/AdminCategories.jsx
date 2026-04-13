@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../context/ToastContext';
@@ -35,7 +35,7 @@ const AdminCategories = () => {
 
   const fetchCategories = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/categories');
+      const { data } = await axiosInstance.get('/api/categories');
       setCategories(data);
     } catch (error) {
       console.error(error);
@@ -45,8 +45,7 @@ const AdminCategories = () => {
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      await axios.post('http://localhost:5000/api/categories', { name, description }, config);
+      await axiosInstance.post('/api/categories', { name, description });
       setName('');
       setDescription('');
       fetchCategories();
@@ -58,8 +57,7 @@ const AdminCategories = () => {
 
   const confirmDeleteAction = async () => {
     try {
-      const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      await axios.delete(`http://localhost:5000/api/categories/${confirmDelete.id}`, config);
+      await axiosInstance.delete(`/api/categories/${confirmDelete.id}`);
       fetchCategories();
       showToast('Đã xóa thương hiệu thành công! 🗑️');
     } catch (error) {

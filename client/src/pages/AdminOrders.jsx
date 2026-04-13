@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { formatDisplayPrice, parseNumericPrice } from '../utils/priceFormatter';
@@ -35,8 +35,7 @@ const AdminOrders = () => {
 
     const fetchOrders = async () => {
       try {
-        const config = { headers: { Authorization: `Bearer ${user.token}` } };
-        const { data } = await axios.get('http://localhost:5000/api/orders', config);
+        const { data } = await axiosInstance.get('/api/orders');
         setOrders(data);
       } catch (error) {
         console.error(error);
@@ -47,8 +46,7 @@ const AdminOrders = () => {
 
   const updateStatus = async (id, status) => {
     try {
-      const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      await axios.put(`http://localhost:5000/api/orders/${id}/status`, { status }, config);
+      await axiosInstance.put(`/api/orders/${id}/status`, { status });
       setOrders(orders.map(o => o._id === id ? { ...o, status } : o));
       showToast(`Cập nhật trạng thái: ${status} thành công! 🛸`);
     } catch (error) {

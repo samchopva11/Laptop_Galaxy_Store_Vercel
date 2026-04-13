@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, useMemo } from 'react';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 import { AuthContext } from '../context/AuthContext';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { DollarSign, Users, Package, TrendingUp } from 'lucide-react';
@@ -22,10 +22,9 @@ const AdminDashboard = () => {
 
     const fetchData = async () => {
       try {
-        const config = { headers: { Authorization: `Bearer ${user.token}` } };
         const [ordersRes, usersRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/orders', config),
-          axios.get('http://localhost:5000/api/users', config)
+          axiosInstance.get('/api/orders'),
+          axiosInstance.get('/api/users')
         ]);
         setOrders(ordersRes.data);
         setUsers(usersRes.data);

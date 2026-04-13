@@ -1,7 +1,7 @@
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 import { Eye, EyeOff } from 'lucide-react';
 
 const Login = () => {
@@ -23,6 +23,13 @@ const Login = () => {
   const [searchParams] = useSearchParams();
   const redirect = searchParams.get('redirect');
   const redirectPath = redirect ? `/${redirect}` : '/';
+
+  useEffect(() => {
+    const userInfo = localStorage.getItem('userInfo');
+    if (userInfo) {
+      navigate(redirectPath);
+    }
+  }, [navigate, redirectPath]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -46,12 +53,12 @@ const Login = () => {
     setLoading(true);
     try {
       if (step === 1) {
-        await axios.post('http://localhost:5000/api/users', { name, email, password });
+        await axiosInstance.post('/api/users', { name, email, password });
         setStep(2);
         setError('');
         setSuccess('Mã OTP đã được gửi đến email của bạn.');
       } else {
-        await axios.post('http://localhost:5000/api/users/verify-otp', { email, otp });
+        await axiosInstance.post('/api/users/verify-otp', { email, otp });
         await login(email, password);
         navigate(redirectPath);
       }
@@ -70,12 +77,12 @@ const Login = () => {
     try {
       if (step === 1) {
         // Step 1: Request OTP
-        const { data } = await axios.post('http://localhost:5000/api/users/forgot-password', { email });
+        const { data } = await axiosInstance.post('/api/users/forgot-password', { email });
         setStep(2);
         setSuccess(data.message);
       } else if (step === 2) {
         // Step 2: Verify OTP
-        const { data } = await axios.post('http://localhost:5000/api/users/verify-forgot-otp', { email, otp });
+        const { data } = await axiosInstance.post('/api/users/verify-forgot-otp', { email, otp });
         setStep(3);
         setSuccess(data.message);
       } else if (step === 3) {
@@ -83,7 +90,7 @@ const Login = () => {
         if (password !== confirmPassword) {
           return setError('Mật khẩu nhập lại không khớp');
         }
-        const { data } = await axios.post('http://localhost:5000/api/users/reset-password', { email, otp, password });
+        const { data } = await axiosInstance.post('/api/users/reset-password', { email, otp, password });
         setSuccess(data.message + '. Đang chuyển về trang đăng nhập...');
         setTimeout(() => {
           setMode('login');

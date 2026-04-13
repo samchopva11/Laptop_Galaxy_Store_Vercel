@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 import { AuthContext } from '../context/AuthContext';
 import { ArrowLeft, MapPin, CreditCard, Package, Clock, CheckCircle, XCircle, Home } from 'lucide-react';
 
@@ -21,8 +21,7 @@ const OrderDetail = () => {
 
     const fetchOrder = async () => {
       try {
-        const config = { headers: { Authorization: `Bearer ${user.token}` } };
-        const { data } = await axios.get(`http://localhost:5000/api/orders/${id}`, config);
+        const { data } = await axiosInstance.get(`/api/orders/${id}`);
         setOrder(data);
         setLoading(false);
       } catch (error) {

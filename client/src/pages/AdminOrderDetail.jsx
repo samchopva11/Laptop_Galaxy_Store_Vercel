@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 import { AuthContext } from '../context/AuthContext';
 import { ArrowLeft, User, MapPin, CreditCard, Package, Clock, CheckCircle, XCircle } from 'lucide-react';
 import { useToast } from '../context/ToastContext';
@@ -27,8 +27,7 @@ const AdminOrderDetail = () => {
 
     const fetchOrder = async () => {
       try {
-        const config = { headers: { Authorization: `Bearer ${user.token}` } };
-        const { data } = await axios.get(`http://localhost:5000/api/orders/${id}`, config);
+        const { data } = await axiosInstance.get(`/api/orders/${id}`);
         setOrder(data);
         setLoading(false);
       } catch (error) {
@@ -46,11 +45,10 @@ const AdminOrderDetail = () => {
 
   const confirmReturnAction = async () => {
     try {
-      const config = { headers: { Authorization: `Bearer ${user.token}` } };
-      await axios.put(`http://localhost:5000/api/orders/${id}/status`, { status: 'Trả hàng' }, config);
+      await axiosInstance.put(`/api/orders/${id}/status`, { status: 'Trả hàng' });
       showToast('Đã xác nhận trả hàng và hoàn kho thành công!');
       // Tải lại dữ liệu đơn hàng
-      const { data } = await axios.get(`http://localhost:5000/api/orders/${id}`, config);
+      const { data } = await axiosInstance.get(`/api/orders/${id}`);
       setOrder(data);
     } catch (error) {
       showToast(error.response?.data?.message || 'Lỗi khi cập nhật trạng thái');

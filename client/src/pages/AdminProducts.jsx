@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, useRef } from 'react';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 import { AuthContext } from '../context/AuthContext';
 import * as XLSX from 'xlsx';
 import { useNavigate, Link } from 'react-router-dom';
@@ -97,7 +97,6 @@ const AdminProducts = () => {
         }
 
         // Upload từng sản phẩm
-        const config = { headers: { Authorization: `Bearer ${user.token}` } };
         let successCount = 0;
         let failCount = 0;
 
@@ -147,7 +146,7 @@ const AdminProducts = () => {
               badge: itemBadge
             };
 
-            await axios.post('http://localhost:5000/api/products', payload, config);
+            await axiosInstance.post('/api/products', payload);
             successCount++;
           } catch (rowErr) {
             console.error(`Lỗi tại dòng ${successCount + failCount + 1}:`, rowErr.response?.data?.message || rowErr.message);
@@ -189,8 +188,8 @@ const AdminProducts = () => {
   const fetchData = async () => {
     try {
       const [prodRes, catRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/products'),
-        axios.get('http://localhost:5000/api/categories')
+        axiosInstance.get('/api/products'),
+        axiosInstance.get('/api/categories')
       ]);
       setProducts(prodRes.data);
       setCategories(catRes.data);
@@ -203,7 +202,6 @@ const AdminProducts = () => {
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      const config = { headers: { Authorization: `Bearer ${user.token}` } };
       const payload = {
         name, price: Number(price),
         image: image || 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&q=80',
@@ -213,10 +211,10 @@ const AdminProducts = () => {
       };
 
       if (isEditing) {
-        await axios.put(`http://localhost:5000/api/products/${editProductId}`, payload, config);
+        await axiosInstance.put(`/api/products/${editProductId}`, payload);
         showToast('Cập nhật laptop thành công! ✨');
       } else {
-        await axios.post('http://localhost:5000/api/products', payload, config);
+        await axiosInstance.post('/api/products', payload);
         showToast('Đăng sản phẩm thành công! 🚀');
       }
 
@@ -269,14 +267,12 @@ const AdminProducts = () => {
 
   const confirmDeleteAction = async () => {
     try {
-      const config = { headers: { Authorization: `Bearer ${user.token}` } };
-
       if (confirmDelete.isBulk) {
-        const { data } = await axios.post('http://localhost:5000/api/products/bulk-delete', { ids: selectedIds }, config);
+        const { data } = await axiosInstance.post('/api/products/bulk-delete', { ids: selectedIds });
         showToast(data.message || 'Xóa hàng loạt thành công! 🛸');
         setSelectedIds([]);
       } else {
-        await axios.delete(`http://localhost:5000/api/products/${confirmDelete.id}`, config);
+        await axiosInstance.delete(`/api/products/${confirmDelete.id}`);
         showToast('Sản phẩm đã bị xóa khỏi kho! 🗑️');
         setSelectedIds(selectedIds.filter(id => id !== confirmDelete.id));
       }

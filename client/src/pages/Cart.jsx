@@ -1,7 +1,7 @@
 import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
 import { Trash2, Minus, Plus, Truck, CreditCard, ChevronRight } from 'lucide-react';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../context/ToastContext';
@@ -40,14 +40,8 @@ const Cart = () => {
 
     try {
       setIsSubmitting(true);
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${user.token}`,
-        },
-      };
 
-      await axios.post('http://localhost:5000/api/orders', {
+      await axiosInstance.post('/api/orders', {
         orderItems: cartItems,
         shippingAddress: { 
           address: address,
@@ -57,7 +51,7 @@ const Cart = () => {
         },
         paymentMethod: 'COD',
         totalPrice: totalPrice,
-      }, config);
+      });
 
       showToast('Đơn hàng đã được phóng thành công!');
       clearCart();

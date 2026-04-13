@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 
 export const AuthContext = createContext();
 
@@ -17,8 +17,7 @@ export const AuthProvider = ({ children }) => {
       // Verify if user is still valid/not blocked
       const checkUserStatus = async () => {
         try {
-          const config = { headers: { Authorization: `Bearer ${parsedUser.token}` } };
-          await axios.get('http://localhost:5000/api/users/profile', config);
+          await axiosInstance.get('/api/users/profile');
         } catch (error) {
           if (error.response?.status === 401) {
             logout();
@@ -40,7 +39,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const { data } = await axios.post('http://localhost:5000/api/users/login', { email, password });
+      const { data } = await axiosInstance.post('/api/users/login', { email, password });
       setUser(data);
       localStorage.setItem('userInfo', JSON.stringify(data));
       return { success: true };
