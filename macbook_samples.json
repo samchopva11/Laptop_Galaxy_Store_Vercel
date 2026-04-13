@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Apple MacBook Air M1 2020 (8GB/256GB)",
+    "price": 18990000,
+    "image": "https://images.unsplash.com/photo-1611186871348-b1ec696e523f?q=80&w=1000",
+    "category": "Apple",
+    "countInStock": 50,
+    "description": "Chip M1 siêu mạnh mẽ, thiết kế mỏng nhẹ không tiếng ồn. Màn hình Retina hiển thị sắc nét.",
+    "cpu": "Apple M1",
+    "ram": "8GB",
+    "gpu": "7-core GPU",
+    "badge": "Best Seller"
+  },
+  {
+    "name": "Apple MacBook Air 13-inch M2 (8GB/256GB)",
+    "price": 27490000,
+    "image": "https://images.unsplash.com/photo-1517336714460-4c50d91c8c14?q=80&w=1000",
+    "category": "Apple",
+    "countInStock": 30,
+    "description": "Thiết kế mới vuông vức cực sang trọng. Hiệu năng vượt trội với chip M2.",
+    "cpu": "Apple M2",
+    "ram": "8GB",
+    "gpu": "8-core GPU",
+    "badge": "Hot"
+  },
+  {
+    "name": "Apple MacBook Air 15-inch M2 (8GB/256GB)",
+    "price": 31990000,
+    "image": "https://images.unsplash.com/photo-1661961110218-35af7210f803?q=80&w=1000",
+    "category": "Apple",
+    "countInStock": 20,
+    "description": "Màn hình 15.3 inch rộng rãi trong thiết kế mỏng nhẹ không tưởng. Trải nghiệm âm thanh và hình ảnh đẳng cấp.",
+    "cpu": "Apple M2",
+    "ram": "8GB",
+    "gpu": "10-core GPU",
+    "badge": "New"
+  },
+  {
+    "name": "Apple MacBook Pro 14-inch M3 (8GB/512GB)",
+    "price": 39990000,
+    "image": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?q=80&w=1000",
+    "category": "Apple",
+    "countInStock": 15,
+    "description": "Dòng Pro chuyên nghiệp khởi điểm với chip M3. Màn hình Liquid Retina XDR 120Hz mượt mà.",
+    "cpu": "Apple M3",
+    "ram": "8GB",
+    "gpu": "10-core GPU",
+    "badge": "New"
+  },
+  {
+    "name": "Apple MacBook Pro 14-inch M3 Pro (18GB/512GB)",
+    "price": 49990000,
+    "image": "https://images.unsplash.com/photo-1625766763788-95dcce9bf5ac?q=80&w=1000",
+    "category": "Apple",
+    "countInStock": 10,
+    "description": "Cấu hình cực mạnh cho đồ họa và lập trình chuyên nghiệp. Màu Space Black ấn tượng.",
+    "cpu": "Apple M3 Pro",
+    "ram": "18GB",
+    "gpu": "14-core GPU",
+    "badge": "Hot"
+  },
+  {
+    "name": "Apple MacBook Pro 16-inch M3 Max (36GB/1TB)",
+    "price": 89990000,
+    "image": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1000",
+    "category": "Apple",
+    "countInStock": 5,
+    "description": "Đỉnh cao công nghệ laptop. Xử lý mọi dự án 3D, video 8K nặng nhất một cách dễ dàng.",
+    "cpu": "Apple M3 Max",
+    "ram": "36GB",
+    "gpu": "30-core GPU",
+    "badge": "Hot"
+  },
+  {
+    "name": "Apple MacBook Air 13-inch M3 (16GB/512GB)",
+    "price": 32990000,
+    "image": "https://images.unsplash.com/photo-1611186871348-b1ec696e523f?q=80&w=1000",
+    "category": "Apple",
+    "countInStock": 25,
+    "description": "Thế hệ M3 mới nhất kết hợp hoàn hảo giữa tính di động và sức mạnh xử lý.",
+    "cpu": "Apple M3",
+    "ram": "16GB",
+    "gpu": "10-core GPU",
+    "badge": "New"
+  },
+  {
+    "name": "Apple MacBook Air 15-inch M3 (8GB/256GB)",
+    "price": 32990000,
+    "image": "https://images.unsplash.com/photo-1661961110218-35af7210f803?q=80&w=1000",
+    "category": "Apple",
+    "countInStock": 15,
+    "description": "Màn hình lớn cho không gian làm việc tối đa trên một chiếc laptop siêu di động.",
+    "cpu": "Apple M3",
+    "ram": "8GB",
+    "gpu": "10-core GPU",
+    "badge": "New"
+  },
+  {
+    "name": "Apple MacBook Pro 14-inch M2 Pro (16GB/512GB)",
+    "price": 42990000,
+    "image": "https://images.unsplash.com/photo-1625766763788-95dcce9bf5ac?q=80&w=1000",
+    "category": "Apple",
+    "countInStock": 8,
+    "description": "Sức mạnh chuyên nghiệp từ thế hệ M2 Pro. Pin cực trâu và tản nhiệt tối ưu.",
+    "cpu": "Apple M2 Pro",
+    "ram": "16GB",
+    "gpu": "16-core GPU",
+    "badge": "Best Seller"
+  },
+  {
+    "name": "Apple MacBook Pro 13-inch M2 (8GB/256GB)",
+    "price": 29990000,
+    "image": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?q=80&w=1000",
+    "category": "Apple",
+    "countInStock": 12,
+    "description": "Dòng Pro kinh điển với Touch Bar tiện lợi. Hiệu năng ổn định bền bỉ.",
+    "cpu": "Apple M2",
+    "ram": "8GB",
+    "gpu": "10-core GPU",
+    "badge": "Best Seller"
+  }
+]

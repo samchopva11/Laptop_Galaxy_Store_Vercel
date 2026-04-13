@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Lenovo ThinkPad X1 Carbon Gen 12",
+    "price": 42990000,
+    "image": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?q=80&w=1000",
+    "category": "Lenovo",
+    "countInStock": 15,
+    "description": "Biểu tượng của dòng laptop doanh nhân. Siêu nhẹ, siêu bền với sợi carbon cao cấp. Bàn phím gõ sướng nhất thế giới.",
+    "cpu": "Intel Core Ultra 7 155H",
+    "ram": "32GB LPDDR5x",
+    "gpu": "Intel Arc Graphics",
+    "badge": "Hot"
+  },
+  {
+    "name": "Lenovo ThinkPad T14s Gen 5",
+    "price": 31490000,
+    "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?q=80&w=1000",
+    "category": "Lenovo",
+    "countInStock": 25,
+    "description": "Sự kết hợp hoàn hảo giữa hiệu năng và tính di động. Độ bền đạt chuẩn quân đội Mỹ.",
+    "cpu": "Intel Core Ultra 5 125U",
+    "ram": "16GB DDR5",
+    "gpu": "Intel Graphics",
+    "badge": "Best Seller"
+  },
+  {
+    "name": "Lenovo ThinkPad P1 Gen 6",
+    "price": 65990000,
+    "image": "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?q=80&w=1000",
+    "category": "Lenovo",
+    "countInStock": 5,
+    "description": "Máy trạm di động mỏng nhẹ nhưng cực kỳ mạnh mẽ. Chuyên dụng cho thiết kế đồ họa 3D và dựng phim chuyên nghiệp.",
+    "cpu": "Intel Core i9-13900H",
+    "ram": "64GB DDR5",
+    "gpu": "NVIDIA RTX 2000 Ada",
+    "badge": "Hot"
+  },
+  {
+    "name": "Lenovo ThinkPad X1 Nano Gen 3",
+    "price": 37990000,
+    "image": "https://images.unsplash.com/photo-1517336714460-4c50d91c8c14?q=80&w=1000",
+    "category": "Lenovo",
+    "countInStock": 10,
+    "description": "Chiếc ThinkPad nhẹ nhất từng được chế tạo. Trọng lượng chưa đầy 1kg nhưng vẫn đầy đủ tính năng bảo mật cao cấp.",
+    "cpu": "Intel Core i7-1360P",
+    "ram": "16GB LPDDR5",
+    "gpu": "Intel Iris Xe",
+    "badge": "New"
+  },
+  {
+    "name": "Lenovo ThinkPad Z13 Gen 2",
+    "price": 35490000,
+    "image": "https://images.unsplash.com/photo-1611186871348-b1ec696e523f?q=80&w=1000",
+    "category": "Lenovo",
+    "countInStock": 12,
+    "description": "Dòng ThinkPad hiện đại với vật liệu tái chế bền vững. Thiết kế đột phá, sang trọng và cá tính.",
+    "cpu": "AMD Ryzen 7 Pro 7840U",
+    "ram": "16GB LPDDR5x",
+    "gpu": "AMD Radeon 780M",
+    "badge": "New"
+  }
+]

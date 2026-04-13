@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+@import "tailwindcss";
+
+
+@theme {
+  --color-galaxy-dark: #0f0c29;
+  --color-galaxy-purple: #302b63;
+  --color-galaxy-light: #24243e;
+  --color-neon-blue: #00f3ff;
+  --color-neon-purple: #bc13fe;
+}
+
+@layer base {
+  body {
+    background: linear-gradient(135deg, var(--color-galaxy-dark), var(--color-galaxy-purple), var(--color-galaxy-light));
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Lexend', sans-serif;
+  }
+}
+
+@layer components {
+  .galaxy-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .neon-button {
+    background: linear-gradient(45deg, var(--color-neon-purple), var(--color-neon-blue));
+    color: white;
+    border: none;
+    box-shadow: 0 0 10px var(--color-neon-purple), 0 0 20px var(--color-neon-blue);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .neon-button:hover {
+    box-shadow: 0 0 20px var(--color-neon-purple), 0 0 40px var(--color-neon-blue);
+    transform: scale(1.05);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 5px var(--color-neon-blue), 0 0 10px var(--color-neon-purple);
+  }
+
+  /* Animations mượt mà */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 10px var(--color-neon-blue); }
+    50% { box-shadow: 0 0 30px var(--color-neon-blue), 0 0 50px var(--color-neon-purple); }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 3s infinite;
+  }
+}

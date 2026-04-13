@@ -1,0 +1,57 @@
+[
+  {
+    "name": "ASUS ROG Zephyrus G14",
+    "price": 35000000,
+    "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80",
+    "category": "ASUS",
+    "countInStock": 15,
+    "description": "Laptop Gaming di động mỏng nhẹ siêu cấp, nắp lưng đục lỗ LED ma trận đậm chất phi hành gia.",
+    "cpu": "AMD Ryzen 9 7940HS",
+    "ram": "16GB DDR5 4800MHz",
+    "gpu": "NVIDIA GeForce RTX 4060 8GB"
+  },
+  {
+    "name": "ASUS TUF Gaming F15",
+    "price": 22000000,
+    "image": "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&q=80",
+    "category": "ASUS",
+    "countInStock": 45,
+    "description": "Cỗ máy chiến game hạng nặng chuẩn quân đội, bền bỉ mọi đấu trường vô cực.",
+    "cpu": "Intel Core i7-12700H",
+    "ram": "16GB DDR4 3200MHz",
+    "gpu": "NVIDIA GeForce RTX 3050 Ti 4GB"
+  },
+  {
+    "name": "ASUS ZenBook 14 OLED",
+    "price": 26500000,
+    "image": "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=500&q=80",
+    "category": "ASUS",
+    "countInStock": 20,
+    "description": "Sang trọng, mỏng nhẹ, màn hình OLED rực rỡ dải thiên hà cho người làm sáng tạo.",
+    "cpu": "Intel Core i5-1340P",
+    "ram": "16GB LPDDR5",
+    "gpu": "Intel Iris Xe Graphics"
+  },
+  {
+    "name": "ASUS ROG Strix SCAR 16",
+    "price": 85000000,
+    "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?q=80&w=500",
+    "category": "ASUS",
+    "countInStock": 5,
+    "description": "Quái vật hành tinh SCAR 16 với hệ thống linh kiện hủy diệt và đèn LED bao quanh thân.",
+    "cpu": "Intel Core i9-13980HX",
+    "ram": "32GB DDR5 4800MHz",
+    "gpu": "NVIDIA GeForce RTX 4080 12GB"
+  },
+  {
+    "name": "ASUS Vivobook Pro 15 OLED",
+    "price": 18500000,
+    "image": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&q=80",
+    "category": "ASUS",
+    "countInStock": 30,
+    "description": "Hiệu năng cân bằng, đáp ứng công việc làm đồ họa tầm trung, màn hình siêu đẹp không viền.",
+    "cpu": "AMD Ryzen 7 5800H",
+    "ram": "16GB DDR4",
+    "gpu": "NVIDIA GeForce RTX 3050 4GB"
+  }
+]
