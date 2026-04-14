@@ -53,6 +53,11 @@ const Login = () => {
     setLoading(true);
     try {
       if (step === 1) {
+        if (password !== confirmPassword) {
+          setError('Mật khẩu xác nhận không khớp');
+          setLoading(false);
+          return;
+        }
         await axiosInstance.post('/api/users', { name, email, password });
         setStep(2);
         setError('');
@@ -174,6 +179,22 @@ const Login = () => {
                   </button>
                 </div>
               )}
+              {mode === 'register' && (
+                <div className="relative">
+                  <input 
+                    type={showConfirmPassword ? "text" : "password"} placeholder="Xác nhận mật khẩu" required
+                    value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[var(--color-neon-blue)]"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                  >
+                    {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
+                </div>
+              )}
             </>
           )}
 
@@ -256,7 +277,11 @@ const Login = () => {
             onClick={() => { 
                 if (mode === 'login') setMode('register');
                 else setMode('login');
-                setStep(1); setError(''); setSuccess(''); 
+                setStep(1); 
+                setError(''); 
+                setSuccess(''); 
+                setConfirmPassword('');
+                setShowConfirmPassword(false);
             }}
           >
             {mode === 'login' ? 'Đăng ký ngay' : 'Đăng nhập'}
