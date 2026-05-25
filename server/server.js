@@ -17,6 +17,19 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' })); // Increased limit for Base64 avatars
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
+// Database connection middleware
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    res.status(500).json({
+      message: 'Database connection failed',
+      error: error.message
+    });
+  }
+});
+
 // Error Handling Middleware
 app.use((err, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
