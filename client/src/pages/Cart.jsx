@@ -66,11 +66,11 @@ const Cart = () => {
   return (
     <>
     <div className="max-w-7xl mx-auto px-4 py-10 min-h-[70vh]">
-      <h2 className="text-3xl font-bold mb-8 neon-text">Giỏ Hàng Của Bạn</h2>
+      <h2 className="text-3xl font-bold mb-8 neon-text text-[var(--color-primary-bright)]">Giỏ Hàng Của Bạn</h2>
 
       {cartItems.length === 0 ? (
-        <div className="text-center py-20 bg-white/5 rounded-3xl border border-white/5">
-          <p className="text-gray-400 mb-6">Giỏ hàng đang trống. Hãy chuẩn bị hành trang để khám phá vũ trụ nhé!</p>
+        <div className="text-center py-20 bg-[var(--color-primary-muted)]/5 rounded-3xl border border-[var(--color-primary-muted)]/20">
+          <p className="text-gray-600 mb-6">Giỏ hàng đang trống. Hãy chuẩn bị hành trang để khám phá vũ trụ nhé!</p>
           <button onClick={() => navigate('/products')} className="neon-button px-8 py-3 rounded-xl font-bold">Quay Lại Cửa Hàng</button>
         </div>
       ) : (
@@ -80,31 +80,31 @@ const Cart = () => {
             {/* List of Items */}
             <div className="flex flex-col gap-4">
               <h3 className="text-xl font-bold flex items-center gap-2 mb-2">
-                <span className="w-1.5 h-6 bg-[var(--color-neon-blue)] rounded-full"></span>
+                <span className="w-1.5 h-6 bg-[var(--color-primary-bright)] rounded-full"></span>
                 Kiện hàng chuẩn bị xuất phát
               </h3>
               {cartItems.map((item) => (
-                <div key={item.product} className="galaxy-card p-5 rounded-2xl flex items-center justify-between group transition-all hover:border-white/20">
+                <div key={item.product} className="galaxy-card p-5 rounded-2xl flex items-center justify-between group transition-all hover:border-[var(--color-primary-muted)]/30">
                   <div className="flex items-center gap-5">
-                    <div className="w-24 h-24 bg-black/40 rounded-xl flex items-center justify-center p-2 overflow-hidden border border-white/5">
+                    <div className="w-24 h-24 bg-white/50 rounded-xl flex items-center justify-center p-2 overflow-hidden border border-[var(--color-primary-muted)]/20">
                       <img src={item.image} alt={item.name} className="object-contain w-full h-full group-hover:scale-110 transition-transform duration-500" />
                     </div>
                     <div className="flex flex-col gap-1">
-                      <h3 className="font-bold text-lg text-white line-clamp-1">{item.name}</h3>
-                      <p className="text-[var(--color-neon-purple)] font-black text-sm">{item.price.toLocaleString('vi-VN')}₫</p>
+                      <h3 className="font-bold text-lg text-[var(--color-text-dark)] line-clamp-1">{item.name}</h3>
+                      <p className="text-[var(--color-primary-muted)] font-black text-sm">{item.price.toLocaleString('vi-VN')}₫</p>
 
                       {/* Quantity Controls */}
-                      <div className="flex items-center gap-3 mt-2 bg-black/20 w-fit rounded-lg px-2 py-1 border border-white/5">
+                      <div className="flex items-center gap-3 mt-2 bg-[var(--color-primary-muted)]/10 w-fit rounded-lg px-2 py-1 border border-[var(--color-primary-muted)]/20">
                         <button
                           onClick={() => updateCartQty(item.product, item.qty - 1)}
-                          className="p-1 hover:text-[var(--color-neon-blue)] transition-colors"
+                          className="p-1 hover:text-[var(--color-primary-bright)] transition-colors text-[var(--color-text-dark)]"
                         >
                           <Minus className="w-4 h-4" />
                         </button>
-                        <span className="w-6 text-center text-sm font-bold">{item.qty}</span>
+                        <span className="w-6 text-center text-sm font-bold text-[var(--color-text-dark)]">{item.qty}</span>
                         <button
                           onClick={() => updateCartQty(item.product, item.qty + 1)}
-                          className="p-1 hover:text-[var(--color-neon-blue)] transition-colors"
+                          className="p-1 hover:text-[var(--color-primary-bright)] transition-colors text-[var(--color-text-dark)]"
                         >
                           <Plus className="w-4 h-4" />
                         </button>
@@ -114,8 +114,8 @@ const Cart = () => {
 
                   <div className="flex flex-col items-end gap-3">
                     <div className="text-right">
-                      <p className="text-xs text-gray-400 uppercase tracking-widest font-bold mb-1">Thành tiền</p>
-                      <p className="text-xl font-black text-white">{(item.price * item.qty).toLocaleString('vi-VN')}₫</p>
+                      <p className="text-xs text-gray-600 uppercase tracking-widest font-bold mb-1">Thành tiền</p>
+                      <p className="text-xl font-black text-[var(--color-text-dark)]">{(item.price * item.qty).toLocaleString('vi-VN')}₫</p>
                     </div>
                     <button
                       onClick={() => setItemToDelete({ product: item.product, name: item.name })}
@@ -130,45 +130,45 @@ const Cart = () => {
             </div>
 
             {/* Shipping Information Form */}
-            <div className="galaxy-card p-8 rounded-3xl border border-white/5">
+            <div className="galaxy-card p-8 rounded-3xl border border-[var(--color-primary-muted)]/20">
               <h3 className="text-xl font-bold flex items-center gap-3 mb-8">
-                <Truck className="w-6 h-6 text-[var(--color-neon-blue)]" />
+                <Truck className="w-6 h-6 text-[var(--color-primary-bright)]" />
                 Tọa Độ Giao Hàng
               </h3>
               <form id="checkout-form" onSubmit={handleCheckout} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Người nhận tài liệu</label>
+                  <label className="text-xs font-bold text-gray-600 uppercase tracking-widest ml-1">Người nhận tài liệu</label>
                   <input
                     type="text" placeholder="Tên phi hành gia..."
                     value={recipientName} onChange={e => setRecipientName(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-[var(--color-neon-blue)] text-white transition-all"
+                    className="w-full bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-xl p-4 focus:outline-none focus:border-[var(--color-primary-bright)] text-[var(--color-text-dark)] transition-all"
                     required
                   />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Kênh liên lạc (SĐT)</label>
+                  <label className="text-xs font-bold text-gray-600 uppercase tracking-widest ml-1">Kênh liên lạc (SĐT)</label>
                   <input
                     type="tel" placeholder="09xx..."
                     value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-[var(--color-neon-blue)] text-white transition-all"
+                    className="w-full bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-xl p-4 focus:outline-none focus:border-[var(--color-primary-bright)] text-[var(--color-text-dark)] transition-all"
                     required
                   />
                 </div>
                 <div className="flex flex-col gap-1.5 md:col-span-2">
-                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Địa chỉ Trạm nhận (Số nhà, Phố...)</label>
+                  <label className="text-xs font-bold text-gray-600 uppercase tracking-widest ml-1">Địa chỉ Trạm nhận (Số nhà, Phố...)</label>
                   <input
                     type="text" placeholder="Số 123, Đường Milky Way..."
                     value={address} onChange={e => setAddress(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-[var(--color-neon-blue)] text-white transition-all"
+                    className="w-full bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-xl p-4 focus:outline-none focus:border-[var(--color-primary-bright)] text-[var(--color-text-dark)] transition-all"
                     required
                   />
                 </div>
                 <div className="flex flex-col gap-1.5 md:col-span-2">
-                  <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Thành phố / Tỉnh</label>
+                  <label className="text-xs font-bold text-gray-600 uppercase tracking-widest ml-1">Thành phố / Tỉnh</label>
                   <input
                     type="text" placeholder="Nhập thành phố..."
                     value={city} onChange={e => setCity(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:outline-none focus:border-[var(--color-neon-blue)] text-white transition-all"
+                    className="w-full bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-xl p-4 focus:outline-none focus:border-[var(--color-primary-bright)] text-[var(--color-text-dark)] transition-all"
                     required
                   />
                 </div>
@@ -178,26 +178,26 @@ const Cart = () => {
 
           {/* Right Column: Station Summary */}
           <div className="lg:col-span-1">
-            <div className="galaxy-card p-8 rounded-3xl h-fit sticky top-24 border border-white/5 bg-gradient-to-b from-white/5 to-transparent">
+            <div className="galaxy-card p-8 rounded-3xl h-fit sticky top-24 border border-[var(--color-primary-muted)]/20 bg-gradient-to-b from-white/5 to-transparent">
               <h3 className="text-2xl font-black mb-8 flex items-center gap-3">
-                <CreditCard className="w-6 h-6 text-[var(--color-neon-purple)]" />
+                <CreditCard className="w-6 h-6 text-[var(--color-primary-muted)]" />
                 Tổng Kết Trạm
               </h3>
 
-              <div className="flex flex-col gap-4 mb-8 text-gray-300">
+              <div className="flex flex-col gap-4 mb-8 text-gray-700">
                 <div className="flex justify-between items-center text-sm">
                   <span>Số lượng kiện hàng:</span>
-                  <span className="text-white font-bold">{cartItems.reduce((a, c) => a + c.qty, 0)}</span>
+                  <span className="text-[var(--color-text-dark)] font-bold">{cartItems.reduce((a, c) => a + c.qty, 0)}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
                   <span>Phí vận chuyển vũ trụ:</span>
                   <span className="text-green-400 font-bold uppercase tracking-widest text-[10px]">Miễn Phí</span>
                 </div>
-                <div className="w-full h-px bg-white/10 my-2"></div>
+                <div className="w-full h-px bg-[var(--color-primary-muted)]/10 my-2"></div>
                 <div className="flex justify-between items-end">
-                  <span className="text-base font-bold text-white uppercase tracking-tighter">Tổng năng lượng (VAT):</span>
+                  <span className="text-base font-bold text-[var(--color-text-dark)] uppercase tracking-tighter">Tổng năng lượng (VAT):</span>
                   <div className="text-right">
-                    <p className="text-3xl font-black text-[var(--color-neon-purple)] leading-none">{totalPrice.toLocaleString('vi-VN')}₫</p>
+                    <p className="text-3xl font-black text-[var(--color-primary-muted)] leading-none">{totalPrice.toLocaleString('vi-VN')}₫</p>
                   </div>
                 </div>
               </div>
@@ -235,7 +235,7 @@ const Cart = () => {
           onClick={() => setItemToDelete(null)}
         >
           <div
-            className="galaxy-card rounded-3xl p-8 max-w-md w-full border border-white/10 shadow-2xl"
+            className="galaxy-card rounded-3xl p-8 max-w-md w-full border border-[var(--color-primary-muted)]/30 shadow-2xl"
             style={{ animation: 'fadeInScale 0.2s ease' }}
             onClick={e => e.stopPropagation()}
           >
@@ -247,10 +247,10 @@ const Cart = () => {
             </div>
 
             {/* Text */}
-            <h3 className="text-xl font-black text-white text-center mb-2">Xóa Sản Phẩm?</h3>
-            <p className="text-gray-400 text-center text-sm leading-relaxed mb-8">
+            <h3 className="text-xl font-black text-[var(--color-text-dark)] text-center mb-2">Xóa Sản Phẩm?</h3>
+            <p className="text-gray-600 text-center text-sm leading-relaxed mb-8">
               Bạn có chắc muốn xóa{' '}
-              <span className="text-white font-bold">&ldquo;{itemToDelete.name}&rdquo;</span>{' '}
+              <span className="text-[var(--color-text-dark)] font-bold">&ldquo;{itemToDelete.name}&rdquo;</span>{' '}
               khỏi giỏ hàng không?
             </p>
 
@@ -258,7 +258,7 @@ const Cart = () => {
             <div className="flex gap-3">
               <button
                 onClick={() => setItemToDelete(null)}
-                className="flex-1 py-3 rounded-xl font-bold border border-white/10 text-gray-300 hover:bg-white/5 transition-all"
+                className="flex-1 py-3 rounded-xl font-bold border border-[var(--color-primary-muted)]/30 text-gray-700 hover:bg-[var(--color-primary-muted)]/5 transition-all"
               >
                 Hủy
               </button>

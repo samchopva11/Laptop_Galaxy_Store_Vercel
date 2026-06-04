@@ -105,7 +105,7 @@ const AdminUsers = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center neon-text">Đang kết nối cơ sở dữ liệu phi hành gia... 🛰️</div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center neon-text text-[var(--color-primary-bright)]">Đang kết nối cơ sở dữ liệu phi hành gia... 🛰️</div>;
 
   return (
     <div className="max-w-6xl mx-auto min-h-[70vh]">
@@ -113,22 +113,22 @@ const AdminUsers = () => {
 
       {/* Chỉ số tóm tắt */}
       <div className="flex flex-wrap gap-4 mb-8">
-        <div className="galaxy-card p-4 rounded-xl border border-white/5 bg-blue-500/10 min-w-[150px] flex-1">
+        <div className="galaxy-card p-4 rounded-xl border border-[var(--color-primary-muted)]/20 bg-blue-500/10 min-w-[150px] flex-1">
           <p className="text-xs text-blue-300 font-bold uppercase tracking-widest mb-1">Tổng Phi Hành Gia</p>
-          <p className="text-2xl font-black text-white">{users.length}</p>
+          <p className="text-2xl font-black text-[var(--color-text-dark)]">{users.length}</p>
         </div>
-        <div className="galaxy-card p-4 rounded-xl border border-white/5 bg-green-500/10 min-w-[150px] flex-1">
+        <div className="galaxy-card p-4 rounded-xl border border-[var(--color-primary-muted)]/20 bg-green-500/10 min-w-[150px] flex-1">
           <p className="text-xs text-green-300 font-bold uppercase tracking-widest mb-1">Đã Xác Thực</p>
-          <p className="text-2xl font-black text-white">{users.filter(u => u.isVerified).length}</p>
+          <p className="text-2xl font-black text-[var(--color-text-dark)]">{users.filter(u => u.isVerified).length}</p>
         </div>
-        <div className="galaxy-card p-4 rounded-xl border border-white/5 bg-red-500/10 min-w-[150px] flex-1">
+        <div className="galaxy-card p-4 rounded-xl border border-[var(--color-primary-muted)]/20 bg-red-500/10 min-w-[150px] flex-1">
           <p className="text-xs text-red-300 font-bold uppercase tracking-widest mb-1">Chưa Xác Thực</p>
-          <p className="text-2xl font-black text-white">{users.filter(u => !u.isVerified).length}</p>
+          <p className="text-2xl font-black text-[var(--color-text-dark)]">{users.filter(u => !u.isVerified).length}</p>
         </div>
       </div>
 
-      <div className="galaxy-card p-6 rounded-xl border border-white/5">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-white/10 pb-4">
+      <div className="galaxy-card p-6 rounded-xl border border-[var(--color-primary-muted)]/20">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-[var(--color-primary-muted)]/30 pb-4">
           <h3 className="text-xl font-bold">Danh Sách Người Dùng</h3>
 
           <div className="relative w-full md:w-72">
@@ -137,16 +137,16 @@ const AdminUsers = () => {
               placeholder="Tìm phi hành gia (tên hoặc email)..."
               value={searchTerm}
               onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
-              className="w-full bg-white/10 border border-white/10 rounded-full py-2 px-4 pl-10 text-sm focus:outline-none focus:border-pink-500 transition-all"
+              className="w-full bg-[var(--color-primary-muted)]/10 border border-[var(--color-primary-muted)]/30 rounded-full py-2 px-4 pl-10 text-sm focus:outline-none focus:border-pink-500 transition-all"
             />
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600">🔍</span>
           </div>
         </div>
 
         <div className="overflow-x-auto min-h-[400px]">
           <table className="w-full text-left">
             <thead>
-              <tr className="text-gray-400 border-b border-white/10 text-xs uppercase tracking-wider">
+              <tr className="text-gray-600 border-b border-[var(--color-primary-muted)]/30 text-xs uppercase tracking-wider">
                 <th className="p-3">ID</th>
                 <th className="p-3">Tên</th>
                 <th className="p-3">Email</th>
@@ -157,16 +157,16 @@ const AdminUsers = () => {
             </thead>
             <tbody>
               {currentItems.map((u) => (
-                <tr key={u._id} className={`border-b border-white/5 hover:bg-white/5 transition-opacity ${u.isBlocked ? 'opacity-40 grayscale-[0.5]' : ''}`}>
-                  <td className="p-3 text-xs text-gray-400">{u._id}</td>
+                <tr key={u._id} className={`border-b border-[var(--color-primary-muted)]/20 hover:bg-[var(--color-primary-muted)]/5 transition-opacity ${u.isBlocked ? 'opacity-40 grayscale-[0.5]' : ''}`}>
+                  <td className="p-3 text-xs text-gray-600">{u._id}</td>
                   <td className="p-3">
                     <div className="flex items-center gap-3">
                       {u.avatar ? (
-                        <div className="w-8 h-8 rounded-full overflow-hidden border border-white/10 shrink-0">
+                        <div className="w-8 h-8 rounded-full overflow-hidden border border-[var(--color-primary-muted)]/30 shrink-0">
                           <img src={u.avatar} alt={u.name} className="w-full h-full object-cover" />
                         </div>
                       ) : (
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center text-[10px] font-bold text-gray-400 border border-white/10 shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center text-[10px] font-bold text-gray-600 border border-[var(--color-primary-muted)]/30 shrink-0">
                           {u.name.charAt(0).toUpperCase()}
                         </div>
                       )}
@@ -201,7 +201,7 @@ const AdminUsers = () => {
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => handleEditClick(u)}
-                        className="p-2 bg-white/5 hover:bg-white/10 text-blue-400 rounded-lg transition-all border border-blue-500/20"
+                        className="p-2 bg-[var(--color-primary-muted)]/5 hover:bg-[var(--color-primary-muted)]/10 text-blue-400 rounded-lg transition-all border border-blue-500/20"
                         title="Chỉnh sửa chi tiết"
                       >
                         <Edit2 className="w-4 h-4" />
@@ -210,8 +210,8 @@ const AdminUsers = () => {
                       <button
                         onClick={() => handleToggleAdmin(u)}
                         className={`text-[10px] font-black px-3 py-1.5 rounded-lg transition-all border ${u.isAdmin
-                          ? 'border-blue-500/30 text-blue-400 hover:bg-blue-500 hover:text-white'
-                          : 'border-pink-500/30 text-pink-400 hover:bg-pink-500 hover:text-white'
+                          ? 'border-blue-500/30 text-blue-400 hover:bg-blue-500 hover:text-[var(--color-text-dark)]'
+                          : 'border-pink-500/30 text-pink-400 hover:bg-pink-500 hover:text-[var(--color-text-dark)]'
                           }`}
                       >
                         {u.isAdmin ? 'HẠ CẤP' : 'THĂNG CẤP'}
@@ -226,8 +226,8 @@ const AdminUsers = () => {
                             message: `Bạn có chắc chắn muốn ${u.isBlocked ? 'kích hoạt' : 'vô hiệu hóa'} phi hành gia ${u.name} không?`
                           })}
                           className={`p-2 rounded-lg transition-all border ${u.isBlocked
-                            ? 'bg-green-500/10 text-green-400 border-green-500/20 hover:bg-green-500 hover:text-white'
-                            : 'bg-red-500/10 text-red-400 border-red-500/20 hover:bg-red-500 hover:text-white'
+                            ? 'bg-green-500/10 text-green-400 border-green-500/20 hover:bg-green-500 hover:text-[var(--color-text-dark)]'
+                            : 'bg-red-500/10 text-red-400 border-red-500/20 hover:bg-red-500 hover:text-[var(--color-text-dark)]'
                             }`}
                           title={u.isBlocked ? 'Kích hoạt tài khoản' : 'Vô hiệu hóa tài khoản'}
                         >
@@ -268,17 +268,17 @@ const AdminUsers = () => {
       {editModal.isOpen && (
         <div className="fixed inset-0 z-[5000] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setEditModal({ isOpen: false, user: null })}></div>
-          <div className="relative w-full max-w-2xl bg-[#0f0c29] border border-white/10 rounded-3xl p-8 galaxy-card shadow-2xl animate-in zoom-in-95 duration-200">
+          <div className="relative w-full max-w-2xl bg-[var(--color-bg-light)] border border-[var(--color-primary-muted)]/30 rounded-3xl p-8 galaxy-card shadow-2xl animate-in zoom-in-95 duration-200">
             <div className="flex justify-between items-center mb-8">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-blue-500/10 rounded-xl border border-blue-500/20">
                   <User className="w-5 h-5 text-blue-400" />
                 </div>
-                <h3 className="text-2xl font-black neon-text uppercase tracking-tighter">Chi Tiết Phi Hành Gia</h3>
+                <h3 className="text-2xl font-black neon-text text-[var(--color-primary-bright)] uppercase tracking-tighter">Chi Tiết Phi Hành Gia</h3>
               </div>
               <button
                 onClick={() => setEditModal({ isOpen: false, user: null })}
-                className="p-2 hover:bg-white/10 rounded-full transition-colors"
+                className="p-2 hover:bg-[var(--color-primary-muted)]/10 rounded-full transition-colors"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -306,7 +306,7 @@ const AdminUsers = () => {
                       type="text"
                       value={editFormData.name}
                       onChange={(e) => setEditFormData({ ...editFormData, name: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-10 pr-4 focus:outline-none focus:border-blue-500 transition-all font-bold"
+                      className="w-full bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-xl py-3 pl-10 pr-4 focus:outline-none focus:border-blue-500 transition-all font-bold"
                     />
                   </div>
                 </div>
@@ -319,14 +319,14 @@ const AdminUsers = () => {
                       type="email"
                       value={editFormData.email}
                       onChange={(e) => setEditFormData({ ...editFormData, email: e.target.value })}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-10 pr-4 focus:outline-none focus:border-blue-500 transition-all font-bold"
+                      className="w-full bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-xl py-3 pl-10 pr-4 focus:outline-none focus:border-blue-500 transition-all font-bold"
                     />
                   </div>
                 </div>
               </div>
 
               <div className="space-y-6">
-                <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                <div className="p-6 bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-2xl">
                   <h4 className="text-[10px] font-black uppercase tracking-widest text-[#94a3b8] mb-4">Cấp bậc hệ thống</h4>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -349,7 +349,7 @@ const AdminUsers = () => {
                   )}
                 </div>
 
-                <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                <div className="p-6 bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-2xl">
                   <h4 className="text-[10px] font-black uppercase tracking-widest text-[#94a3b8] mb-4">Trạng thái tài khoản</h4>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -377,7 +377,7 @@ const AdminUsers = () => {
                     <CheckCircle className="w-4 h-4 text-green-400" />
                     <span className="text-[10px] font-black uppercase tracking-widest text-green-400">Trạng thái</span>
                   </div>
-                  <p className="text-sm font-bold text-white">
+                  <p className="text-sm font-bold text-[var(--color-text-dark)]">
                     {editModal.user?.isVerified ? 'Tài khoản đã được xác thực' : 'Chưa xác thực'}
                   </p>
                 </div>
@@ -387,13 +387,13 @@ const AdminUsers = () => {
             <div className="flex gap-4">
               <button
                 onClick={() => setEditModal({ isOpen: false, user: null })}
-                className="flex-1 px-6 py-4 rounded-xl border border-white/10 text-white font-bold hover:bg-red-500/80 transition-all uppercase tracking-widest text-xs"
+                className="flex-1 px-6 py-4 rounded-xl border border-[var(--color-primary-muted)]/30 text-[var(--color-text-dark)] font-bold hover:bg-red-500/80 transition-all uppercase tracking-widest text-xs"
               >
                 HỦY
               </button>
               <button
                 onClick={handleUpdateUser}
-                className="flex-2 flex-[2] px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl font-black text-white hover:scale-105 active:scale-95 transition-all shadow-lg shadow-blue-500/20 uppercase tracking-widest text-xs flex items-center justify-center gap-2"
+                className="flex-2 flex-[2] px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl font-black text-[var(--color-text-dark)] hover:scale-105 active:scale-95 transition-all shadow-lg shadow-blue-500/20 uppercase tracking-widest text-xs flex items-center justify-center gap-2"
               >
                 <Save className="w-4 h-4" />
                 Cập nhật hồ sơ

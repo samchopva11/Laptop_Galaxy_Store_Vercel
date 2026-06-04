@@ -104,7 +104,7 @@ const AdminOrders = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center neon-text">Đang kết nối trạm chỉ huy... 🛰️</div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center neon-text text-[var(--color-primary-bright)]">Đang kết nối trạm chỉ huy... 🛰️</div>;
 
   return (
     <div className="w-full">
@@ -112,18 +112,18 @@ const AdminOrders = () => {
 
       {/* Chỉ số tóm tắt */}
       <div className="flex flex-wrap gap-4 mb-8">
-        <div className="galaxy-card p-4 rounded-xl border border-white/5 bg-indigo-500/10 min-w-[200px] flex-1">
+        <div className="galaxy-card p-4 rounded-xl border border-[var(--color-primary-muted)]/20 bg-indigo-500/10 min-w-[200px] flex-1">
           <p className="text-xs text-indigo-300 font-bold uppercase tracking-widest mb-1">Cần Xử Lý</p>
-          <p className="text-2xl font-black text-white">{orders.filter(o => o.status === 'Chưa xử lý').length}</p>
+          <p className="text-2xl font-black text-[var(--color-text-dark)]">{orders.filter(o => o.status === 'Chưa xử lý').length}</p>
         </div>
-        <div className="galaxy-card p-4 rounded-xl border border-white/5 bg-yellow-500/10 min-w-[200px] flex-1">
+        <div className="galaxy-card p-4 rounded-xl border border-[var(--color-primary-muted)]/20 bg-yellow-500/10 min-w-[200px] flex-1">
           <p className="text-xs text-yellow-300 font-bold uppercase tracking-widest mb-1">Đang Giao Hàng</p>
-          <p className="text-2xl font-black text-white">{orders.filter(o => o.status === 'Đang giao').length}</p>
+          <p className="text-2xl font-black text-[var(--color-text-dark)]">{orders.filter(o => o.status === 'Đang giao').length}</p>
         </div>
       </div>
 
       <div className="galaxy-card p-6 rounded-xl">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-white/10 pb-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-[var(--color-primary-muted)]/30 pb-4">
           <h3 className="text-xl font-bold">Danh sách Đơn Hàng</h3>
 
           <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
@@ -134,7 +134,7 @@ const AdminOrders = () => {
                 placeholder="Tổng tiền từ..."
                 value={minTotal}
                 onChange={(e) => { setMinTotal(formatDisplayPrice(e.target.value)); setCurrentPage(1); }}
-                className="w-32 bg-white/10 border border-white/10 rounded-lg py-2 px-3 text-xs focus:outline-none focus:border-pink-500"
+                className="w-32 bg-[var(--color-primary-muted)]/10 border border-[var(--color-primary-muted)]/30 rounded-lg py-2 px-3 text-xs focus:outline-none focus:border-pink-500"
               />
               <span className="text-gray-500">-</span>
               <input
@@ -142,7 +142,7 @@ const AdminOrders = () => {
                 placeholder="đến..."
                 value={maxTotal}
                 onChange={(e) => { setMaxTotal(formatDisplayPrice(e.target.value)); setCurrentPage(1); }}
-                className="w-32 bg-white/10 border border-white/10 rounded-lg py-2 px-3 text-xs focus:outline-none focus:border-pink-500"
+                className="w-32 bg-[var(--color-primary-muted)]/10 border border-[var(--color-primary-muted)]/30 rounded-lg py-2 px-3 text-xs focus:outline-none focus:border-pink-500"
               />
             </div>
 
@@ -153,9 +153,9 @@ const AdminOrders = () => {
                 placeholder="Tìm ID đơn hoặc tên khách..."
                 value={searchTerm}
                 onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
-                className="w-full bg-white/10 border border-white/10 rounded-full py-2 px-4 pl-10 text-sm focus:outline-none focus:border-pink-500 transition-all font-medium"
+                className="w-full bg-[var(--color-primary-muted)]/10 border border-[var(--color-primary-muted)]/30 rounded-full py-2 px-4 pl-10 text-sm focus:outline-none focus:border-pink-500 transition-all font-medium"
               />
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600">🔍</span>
             </div>
 
             {(searchTerm || minTotal || maxTotal) && (
@@ -172,7 +172,7 @@ const AdminOrders = () => {
         <div className="overflow-x-auto min-h-[400px]">
           <table className="w-full text-left">
             <thead>
-              <tr className="text-gray-400 border-b border-white/10 text-xs uppercase tracking-wider">
+              <tr className="text-gray-600 border-b border-[var(--color-primary-muted)]/30 text-xs uppercase tracking-wider">
                 <th className="p-3 cursor-pointer hover:text-pink-400 transition-colors" onClick={() => handleSort('_id')}>ID {sortField === '_id' && (sortOrder === 'asc' ? '↑' : '↓')}</th>
                 <th className="p-3 cursor-pointer hover:text-pink-400 transition-colors" onClick={() => handleSort('user')}>Khách Hàng {sortField === 'user' && (sortOrder === 'asc' ? '↑' : '↓')}</th>
                 <th className="p-3 cursor-pointer hover:text-pink-400 transition-colors" onClick={() => handleSort('createdAt')}>Ngày Đặt {sortField === 'createdAt' && (sortOrder === 'asc' ? '↑' : '↓')}</th>
@@ -183,11 +183,11 @@ const AdminOrders = () => {
             </thead>
             <tbody>
               {currentItems.map((order) => (
-                <tr key={order._id} className="border-b border-white/5 hover:bg-white/5">
+                <tr key={order._id} className="border-b border-[var(--color-primary-muted)]/20 hover:bg-[var(--color-primary-muted)]/5">
                   <td className="p-3 text-sm">{order._id}</td>
                   <td className="p-3">{order.user?.name || 'Unknown'}</td>
                   <td className="p-3">{order.createdAt.substring(0, 10)}</td>
-                  <td className="p-3 text-[var(--color-neon-blue)]">{order.totalPrice.toLocaleString()}₫</td>
+                  <td className="p-3 text-[var(--color-primary-bright)]">{order.totalPrice.toLocaleString()}₫</td>
                   <td className="p-3">
                     <span className={`px-2 py-1 rounded text-xs font-bold ${order.status === 'Đã giao' ? 'bg-green-500/20 text-green-300' :
                         order.status === 'Đã hủy' ? 'bg-red-500/20 text-red-400' :
