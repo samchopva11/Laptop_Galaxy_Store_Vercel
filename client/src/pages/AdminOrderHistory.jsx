@@ -97,7 +97,7 @@ const AdminOrderHistory = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center neon-text">Đang truy xuất kho lưu trữ dữ liệu... 🛰️</div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center neon-text text-[var(--color-primary-bright)]">Đang truy xuất kho lưu trữ dữ liệu... 🛰️</div>;
 
   return (
     <div className="w-full">
@@ -105,25 +105,25 @@ const AdminOrderHistory = () => {
 
       {/* Chỉ số tóm tắt (Cho lịch sử) */}
       <div className="flex flex-wrap gap-4 mb-8">
-        <div className="galaxy-card p-4 rounded-xl border border-white/5 bg-green-500/10 min-w-[200px] flex-1">
+        <div className="galaxy-card p-4 rounded-xl border border-[var(--color-primary-muted)]/20 bg-green-500/10 min-w-[200px] flex-1">
           <p className="text-xs text-green-300 font-bold uppercase tracking-widest mb-1">Tổng Số Đơn Đã Giao</p>
-          <p className="text-2xl font-black text-white">{orders.filter(o => o.status === 'Đã giao').length}</p>
+          <p className="text-2xl font-black text-[var(--color-text-dark)]">{orders.filter(o => o.status === 'Đã giao').length}</p>
         </div>
-        <div className="galaxy-card p-4 rounded-xl border border-white/5 bg-red-500/10 min-w-[150px] flex-1">
+        <div className="galaxy-card p-4 rounded-xl border border-[var(--color-primary-muted)]/20 bg-red-500/10 min-w-[150px] flex-1">
           <p className="text-xs text-red-300 font-bold uppercase tracking-widest mb-1">Tổng Số Đơn Hủy</p>
-          <p className="text-2xl font-black text-white">{orders.filter(o => o.status === 'Đã hủy').length}</p>
+          <p className="text-2xl font-black text-[var(--color-text-dark)]">{orders.filter(o => o.status === 'Đã hủy').length}</p>
         </div>
-        <div className="galaxy-card p-4 rounded-xl border border-white/5 bg-orange-500/10 min-w-[150px] flex-1">
+        <div className="galaxy-card p-4 rounded-xl border border-[var(--color-primary-muted)]/20 bg-orange-500/10 min-w-[150px] flex-1">
           <p className="text-xs text-orange-300 font-bold uppercase tracking-widest mb-1">Đơn Trả Hàng</p>
-          <p className="text-2xl font-black text-white">{orders.filter(o => o.status === 'Trả hàng').length}</p>
+          <p className="text-2xl font-black text-[var(--color-text-dark)]">{orders.filter(o => o.status === 'Trả hàng').length}</p>
         </div>
       </div>
 
       <div className="galaxy-card p-6 rounded-xl">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-white/10 pb-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-[var(--color-primary-muted)]/30 pb-4">
           <div className="flex items-baseline gap-3">
             <h3 className="text-xl font-bold">Danh sách Lưu Trữ</h3>
-            <span className="text-xs text-gray-400">({filteredOrders.length} bản ghi)</span>
+            <span className="text-xs text-gray-600">({filteredOrders.length} bản ghi)</span>
           </div>
 
           <div className="relative w-full md:w-64">
@@ -132,16 +132,16 @@ const AdminOrderHistory = () => {
               placeholder="Tìm ID đơn hoặc tên khách..."
               value={searchTerm}
               onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
-              className="w-full bg-white/10 border border-white/10 rounded-full py-2 px-4 pl-10 text-xs focus:outline-none focus:border-pink-500 transition-all font-medium"
+              className="w-full bg-[var(--color-primary-muted)]/10 border border-[var(--color-primary-muted)]/30 rounded-full py-2 px-4 pl-10 text-xs focus:outline-none focus:border-pink-500 transition-all font-medium"
             />
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600">🔍</span>
           </div>
         </div>
 
         <div className="overflow-x-auto min-h-[400px]">
           <table className="w-full text-left">
             <thead>
-              <tr className="text-gray-400 border-b border-white/10 text-[10px] uppercase tracking-wider">
+              <tr className="text-gray-600 border-b border-[var(--color-primary-muted)]/30 text-[10px] uppercase tracking-wider">
                 <th className="p-3 cursor-pointer hover:text-pink-400 transition-colors" onClick={() => handleSort('_id')}>ID {sortField === '_id' && (sortOrder === 'asc' ? '↑' : '↓')}</th>
                 <th className="p-3 cursor-pointer hover:text-pink-400 transition-colors" onClick={() => handleSort('user')}>Khách Hàng {sortField === 'user' && (sortOrder === 'asc' ? '↑' : '↓')}</th>
                 <th className="p-3 cursor-pointer hover:text-pink-400 transition-colors" onClick={() => handleSort('createdAt')}>Ngày Đặt {sortField === 'createdAt' && (sortOrder === 'asc' ? '↑' : '↓')}</th>
@@ -152,11 +152,11 @@ const AdminOrderHistory = () => {
             </thead>
             <tbody>
               {currentItems.map((order) => (
-                <tr key={order._id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                  <td className="p-3 text-[13px] font-mono text-gray-400">{order._id}</td>
+                <tr key={order._id} className="border-b border-[var(--color-primary-muted)]/20 hover:bg-[var(--color-primary-muted)]/5 transition-colors">
+                  <td className="p-3 text-[13px] font-mono text-gray-600">{order._id}</td>
                   <td className="p-3 text-sm font-bold">{order.user?.name || 'Unknown'}</td>
                   <td className="p-3 text-xs">{order.createdAt.substring(0, 10)}</td>
-                  <td className="p-3 text-sm text-[var(--color-neon-blue)]">{order.totalPrice.toLocaleString()}₫</td>
+                  <td className="p-3 text-sm text-[var(--color-primary-bright)]">{order.totalPrice.toLocaleString()}₫</td>
                   <td className="p-3">
                     <span className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase ${order.status === 'Đã giao' ? 'bg-green-500/20 text-green-300 border border-green-500/30' :
                       order.status === 'Trả hàng' ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30' :
@@ -173,7 +173,7 @@ const AdminOrderHistory = () => {
                       {order.status === 'Đã giao' && (
                         <button
                           onClick={() => handleReturnOrder(order._id)}
-                          className="bg-orange-600/20 hover:bg-orange-600 hover:text-white text-orange-400 px-3 py-1 rounded text-xs transition-all border border-orange-500/30 font-bold"
+                          className="bg-orange-600/20 hover:bg-orange-600 hover:text-[var(--color-text-dark)] text-orange-400 px-3 py-1 rounded text-xs transition-all border border-orange-500/30 font-bold"
                         >
                           Trả Hàng
                         </button>

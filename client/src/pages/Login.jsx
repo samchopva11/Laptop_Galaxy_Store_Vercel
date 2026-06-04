@@ -128,7 +128,7 @@ const Login = () => {
   return (
     <div className="min-h-[70vh] flex items-center justify-center p-4">
       <div className="galaxy-card max-w-md w-full p-8 rounded-2xl relative overflow-hidden">
-        <h2 className="text-3xl font-bold mb-6 text-center neon-text">
+        <h2 className="text-3xl font-bold mb-6 text-center neon-text text-[var(--color-primary-bright)]">
           {getTitle()}
         </h2>
         
@@ -138,7 +138,7 @@ const Login = () => {
             {error.includes('Vô Hiệu Hóa') && (
               <a 
                 href="mailto:admin@laptopgalaxy.com?subject=Yêu cầu mở khóa tài khoản"
-                className="inline-block w-full py-2 bg-red-500/30 hover:bg-red-500/50 text-white text-center rounded-lg transition-all border border-red-500/30 font-bold text-xs uppercase tracking-widest"
+                className="inline-block w-full py-2 bg-red-500/30 hover:bg-red-500/50 text-[var(--color-text-dark)] text-center rounded-lg transition-all border border-red-500/30 font-bold text-xs uppercase tracking-widest"
               >
                 Liên Hệ Chỉ Huy để biết thêm chi tiết
               </a>
@@ -152,7 +152,7 @@ const Login = () => {
             <input 
               type="text" placeholder="Họ và tên" required
               value={name} onChange={e => setName(e.target.value)}
-              className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[var(--color-neon-blue)]"
+              className="bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-lg px-4 py-3 text-[var(--color-text-dark)] placeholder-gray-400 focus:outline-none focus:border-[var(--color-primary-bright)]"
             />
           )}
 
@@ -161,19 +161,19 @@ const Login = () => {
               <input 
                 type="email" placeholder="Email" required
                 value={email} onChange={e => setEmail(e.target.value)}
-                className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[var(--color-neon-blue)]"
+                className="bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-lg px-4 py-3 text-[var(--color-text-dark)] placeholder-gray-400 focus:outline-none focus:border-[var(--color-primary-bright)]"
               />
               {mode !== 'forgot' && (
                 <div className="relative">
                   <input 
                     type={showPassword ? "text" : "password"} placeholder="Mật khẩu" required
                     value={password} onChange={e => setPassword(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[var(--color-neon-blue)]"
+                    className="w-full bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-lg px-4 py-3 text-[var(--color-text-dark)] placeholder-gray-400 focus:outline-none focus:border-[var(--color-primary-bright)]"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-[var(--color-text-dark)] transition-colors"
                   >
                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                   </button>
@@ -184,12 +184,12 @@ const Login = () => {
                   <input 
                     type={showConfirmPassword ? "text" : "password"} placeholder="Xác nhận mật khẩu" required
                     value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[var(--color-neon-blue)]"
+                    className="w-full bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-lg px-4 py-3 text-[var(--color-text-dark)] placeholder-gray-400 focus:outline-none focus:border-[var(--color-primary-bright)]"
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-[var(--color-text-dark)] transition-colors"
                   >
                     {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                   </button>
@@ -202,7 +202,7 @@ const Login = () => {
             <input 
               type="text" placeholder="Nhập mã OTP từ email" required
               value={otp} onChange={e => setOtp(e.target.value)}
-              className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[var(--color-neon-blue)]"
+              className="bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-lg px-4 py-3 text-[var(--color-text-dark)] placeholder-gray-400 focus:outline-none focus:border-[var(--color-primary-bright)]"
             />
           )}
 
@@ -212,12 +212,12 @@ const Login = () => {
                 <input 
                   type={showPassword ? "text" : "password"} placeholder="Mật khẩu mới" required
                   value={password} onChange={e => setPassword(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[var(--color-neon-blue)]"
+                  className="w-full bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-lg px-4 py-3 text-[var(--color-text-dark)] placeholder-gray-400 focus:outline-none focus:border-[var(--color-primary-bright)]"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-[var(--color-text-dark)] transition-colors"
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
@@ -226,12 +226,12 @@ const Login = () => {
                 <input 
                   type={showConfirmPassword ? "text" : "password"} placeholder="Xác nhận mật khẩu mới" required
                   value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-[var(--color-neon-blue)]"
+                  className="w-full bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-lg px-4 py-3 text-[var(--color-text-dark)] placeholder-gray-400 focus:outline-none focus:border-[var(--color-primary-bright)]"
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-[var(--color-text-dark)] transition-colors"
                 >
                   {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
@@ -260,7 +260,7 @@ const Login = () => {
         {mode === 'login' && (
           <div className="text-right mt-2">
             <button 
-              className="text-gray-400 text-xs hover:text-[var(--color-neon-blue)] transition-colors"
+              className="text-gray-600 text-xs hover:text-[var(--color-primary-bright)] transition-colors"
               onClick={() => { setMode('forgot'); setStep(1); setError(''); setSuccess(''); }}
             >
               Quên mật khẩu?
@@ -268,12 +268,12 @@ const Login = () => {
           </div>
         )}
 
-        <p className="mt-6 text-center text-sm text-gray-400">
+        <p className="mt-6 text-center text-sm text-gray-600">
           {mode === 'login' ? 'Chưa có thẻ thông hành? ' : 
            mode === 'register' ? 'Đã là thành viên? ' : 'Quay lại '}
           <button 
             type="button"
-            className="text-[var(--color-neon-blue)] font-bold hover:underline"
+            className="text-[var(--color-primary-bright)] font-bold hover:underline"
             onClick={() => { 
                 if (mode === 'login') setMode('register');
                 else setMode('login');

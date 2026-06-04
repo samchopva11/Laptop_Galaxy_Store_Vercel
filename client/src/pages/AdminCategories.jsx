@@ -88,7 +88,7 @@ const AdminCategories = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center neon-text">Đang đồng bộ dữ liệu thương hiệu... 🛰️</div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center neon-text text-[var(--color-primary-bright)]">Đang đồng bộ dữ liệu thương hiệu... 🛰️</div>;
 
   return (
     <div className="w-full">
@@ -96,44 +96,44 @@ const AdminCategories = () => {
 
       {/* Chỉ số tóm tắt */}
       <div className="flex gap-4 mb-8">
-        <div className="galaxy-card p-4 rounded-xl border border-white/5 bg-indigo-500/10 flex-1 md:flex-none md:min-w-[200px]">
+        <div className="galaxy-card p-4 rounded-xl border border-[var(--color-primary-muted)]/20 bg-indigo-500/10 flex-1 md:flex-none md:min-w-[200px]">
           <p className="text-xs text-indigo-300 font-bold uppercase tracking-widest mb-1">Tổng Thương Hiệu</p>
-          <p className="text-2xl font-black text-white">{categories.length}</p>
+          <p className="text-2xl font-black text-[var(--color-text-dark)]">{categories.length}</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Cột Trái: Form Tạo */}
-        <div className="galaxy-card p-6 rounded-xl h-fit border border-white/5">
+        <div className="galaxy-card p-6 rounded-xl h-fit border border-[var(--color-primary-muted)]/20">
           <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
             <span className="text-pink-500">✦</span> Thêm Hãng Mới
           </h3>
           <form onSubmit={handleCreate} className="flex flex-col gap-4">
             <div>
-              <label className="text-xs text-gray-400 mb-1 block">TÊN THƯƠNG HIỆU</label>
+              <label className="text-xs text-gray-600 mb-1 block">TÊN THƯƠNG HIỆU</label>
               <input
                 type="text" placeholder="Ví dụ: ASUS, DELL, MSI..." required
                 value={name} onChange={(e) => setName(e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-pink-500 transition-all font-medium"
+                className="w-full bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-lg p-3 text-[var(--color-text-dark)] focus:outline-none focus:border-pink-500 transition-all font-medium"
               />
             </div>
             <div>
-              <label className="text-xs text-gray-400 mb-1 block">MÔ TẢ NGẮN</label>
+              <label className="text-xs text-gray-600 mb-1 block">MÔ TẢ NGẮN</label>
               <textarea
                 placeholder="Nhập giới thiệu về hãng sản xuất..."
                 value={description} onChange={(e) => setDescription(e.target.value)}
-                className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-pink-500 h-24 transition-all"
+                className="w-full bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-lg p-3 text-[var(--color-text-dark)] focus:outline-none focus:border-pink-500 h-24 transition-all"
               ></textarea>
             </div>
-            <button type="submit" className="bg-gradient-to-r from-pink-600 to-purple-700 hover:shadow-[0_0_15px_rgba(219,39,119,0.4)] text-white font-bold py-3 rounded-lg transition-all transform active:scale-95">
+            <button type="submit" className="bg-gradient-to-r from-pink-600 to-purple-700 hover:shadow-[0_0_15px_rgba(219,39,119,0.4)] text-[var(--color-text-dark)] font-bold py-3 rounded-lg transition-all transform active:scale-95">
               + Tạo Thương Hiệu
             </button>
           </form>
         </div>
 
         {/* Cột Phải: Danh sách, Tìm kiếm & Phân trang */}
-        <div className="lg:col-span-2 galaxy-card p-6 rounded-xl border border-white/5 bg-black/40">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-white/10 pb-4">
+        <div className="lg:col-span-2 galaxy-card p-6 rounded-xl border border-[var(--color-primary-muted)]/20 bg-white">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-[var(--color-primary-muted)]/30 pb-4">
             <h3 className="text-xl font-bold">Danh Sách Thương Hiệu</h3>
 
             <div className="flex flex-wrap gap-2 w-full md:w-auto">
@@ -147,19 +147,19 @@ const AdminCategories = () => {
                     setSearchTerm(e.target.value);
                     setCurrentPage(1); // Reset về trang 1 khi tìm kiếm
                   }}
-                  className="w-full bg-white/10 border border-white/10 rounded-full py-1.5 px-4 pl-9 text-xs focus:outline-none focus:border-pink-500 focus:bg-white/15 transition-all"
+                  className="w-full bg-[var(--color-primary-muted)]/10 border border-[var(--color-primary-muted)]/30 rounded-full py-1.5 px-4 pl-9 text-xs focus:outline-none focus:border-pink-500 focus:bg-[var(--color-primary-muted)]/20 transition-all text-[var(--color-text-dark)]"
                 />
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">🔍</span>
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600 text-xs">🔍</span>
               </div>
 
               {/* Sắp xếp */}
               <select
                 value={sortOrder}
                 onChange={(e) => setSortOrder(e.target.value)}
-                className="bg-white/10 border border-white/10 rounded-lg px-3 py-1.5 text-xs focus:outline-none text-white cursor-pointer"
+                className="bg-[var(--color-primary-muted)]/10 border border-[var(--color-primary-muted)]/30 rounded-lg px-3 py-1.5 text-xs focus:outline-none text-[var(--color-text-dark)] cursor-pointer"
               >
-                <option value="name-asc" className="bg-gray-900">Tên: A → Z</option>
-                <option value="name-desc" className="bg-gray-900">Tên: Z → A</option>
+                <option value="name-asc" className="bg-white">Tên: A → Z</option>
+                <option value="name-desc" className="bg-white">Tên: Z → A</option>
               </select>
             </div>
           </div>
@@ -167,19 +167,19 @@ const AdminCategories = () => {
           <div className="min-h-[350px] flex flex-col justify-between">
             <ul className="flex flex-col gap-3">
               {currentItems.map((cat) => (
-                <li key={cat._id} className="group flex justify-between items-center bg-white/5 p-4 rounded-xl hover:bg-white/10 border border-transparent hover:border-pink-500/30 transition-all">
+                <li key={cat._id} className="group flex justify-between items-center bg-[var(--color-primary-muted)]/5 p-4 rounded-xl hover:bg-[var(--color-primary-muted)]/10 border border-transparent hover:border-pink-500/30 transition-all">
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400 font-bold">
+                    <div className="w-10 h-10 rounded-full bg-[var(--color-primary-bright)]/20 flex items-center justify-center text-[var(--color-primary-bright)] font-bold">
                       {cat.name.charAt(0).toUpperCase()}
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-100 group-hover:text-pink-400 transition-colors">{cat.name}</h4>
-                      <p className="text-xs text-gray-400 line-clamp-1 italic">{cat.description || 'Chưa có mô tả chi tiết'}</p>
+                      <h4 className="font-bold text-[var(--color-text-dark)] group-hover:text-[var(--color-primary-bright)] transition-colors">{cat.name}</h4>
+                      <p className="text-xs text-gray-600 line-clamp-1 italic">{cat.description || 'Chưa có mô tả chi tiết'}</p>
                     </div>
                   </div>
                   <button
                     onClick={() => handleDelete(cat._id)}
-                    className="opacity-0 group-hover:opacity-100 bg-red-500/10 text-red-400 px-4 py-1.5 rounded-lg hover:bg-red-500 hover:text-white transition-all text-xs font-bold"
+                    className="opacity-0 group-hover:opacity-100 bg-red-500/10 text-red-400 px-4 py-1.5 rounded-lg hover:bg-red-500 hover:text-[var(--color-text-dark)] transition-all text-xs font-bold"
                   >
                     XÓA
                   </button>

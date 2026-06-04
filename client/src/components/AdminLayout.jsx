@@ -21,10 +21,10 @@ const AdminLayout = () => {
   ];
 
   return (
-    <div className="min-h-screen flex text-white overflow-hidden">
+    <div className="min-h-screen flex text-[var(--color-text-dark)] overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-64 galaxy-card flex flex-col border-r border-white/10 shrink-0">
-        <div className="p-6 border-b border-white/10">
+      <aside className="w-64 galaxy-card flex flex-col border-r border-[var(--color-primary-muted)]/20 shrink-0">
+        <div className="p-6 border-b border-[var(--color-primary-muted)]/20">
           <h2 className="text-xl font-bold neon-text uppercase tracking-wider">
             Admin Panel
           </h2>
@@ -37,9 +37,9 @@ const AdminLayout = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-all duration-200 ${isActive
-                  ? 'bg-pink-600/30 text-pink-300 border border-pink-500/50 shadow-[0_0_15px_rgba(236,72,153,0.3)]'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg font-bold transition-all duration-200 ${isActive
+                  ? 'bg-[var(--color-primary-bright)]/20 text-[var(--color-primary-bright)] border border-[var(--color-primary-bright)]/50 shadow-[0_0_15px_rgba(196,121,255,0.3)]'
+                  : 'text-gray-600 hover:text-[var(--color-text-dark)] hover:bg-[var(--color-primary-muted)]/10'
                   }`}
               >
                 {item.icon}
@@ -49,27 +49,27 @@ const AdminLayout = () => {
           })}
         </nav>
 
-        <div className="p-4 border-t border-white/10">
+        <div className="p-4 border-t border-[var(--color-primary-muted)]/20">
           <div className="px-4 py-2 mb-2 flex items-center gap-3">
             {user?.avatar ? (
-              <div className="w-10 h-10 rounded-full overflow-hidden border border-pink-500/30">
+              <div className="w-10 h-10 rounded-full overflow-hidden border border-[var(--color-primary-bright)]/30">
                 <img src={user.avatar} alt="Admin" className="w-full h-full object-cover" />
               </div>
             ) : (
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-sm font-bold text-white border border-pink-500/30">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--color-primary-bright)] to-[var(--color-primary-muted)] flex items-center justify-center text-sm font-bold text-white border border-[var(--color-primary-bright)]/30">
                 {user?.name.charAt(0).toUpperCase()}
               </div>
             )}
             <div className="flex-1 min-w-0">
               <span className="block text-[10px] text-gray-500 uppercase tracking-widest leading-none mb-1">Chỉ huy trạm</span>
-              <span className="block text-sm font-bold text-[var(--color-neon-blue)] truncate" title={user?.name}>
+              <span className="block text-sm font-bold text-[var(--color-primary-bright)] truncate" title={user?.name}>
                 {user?.name}
               </span>
             </div>
           </div>
           <button
             onClick={() => setIsLogoutConfirmOpen(true)}
-            className="flex items-center gap-3 w-full px-4 py-3 text-gray-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
+            className="flex items-center gap-3 w-full px-4 py-3 text-gray-600 hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-colors font-bold"
           >
             <LogOut className="w-5 h-5" /> Đăng Xuất
           </button>
@@ -79,7 +79,7 @@ const AdminLayout = () => {
       {/* Main Content Area */}
       <main className="flex-grow overflow-y-auto p-8 relative">
         {/* Background Effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-galaxy-dark)] to-[var(--color-galaxy-purple)] -z-10 opacity-50 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-bg-light)] to-[var(--color-bg-cream)] -z-10 opacity-50 pointer-events-none"></div>
         <Outlet />
       </main>
 

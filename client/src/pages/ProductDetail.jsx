@@ -29,14 +29,14 @@ const ProductDetail = () => {
     fetchProduct();
   }, [id]);
 
-  if (loading) return <div className="text-center py-20 text-gray-400">Đang dò tìm tín hiệu...</div>;
+  if (loading) return <div className="text-center py-20 text-gray-600">Đang dò tìm tín hiệu...</div>;
   if (!product) return <div className="text-center py-20 text-red-400">Không tìm thấy vệ tinh này.</div>;
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 min-h-[70vh]">
       <button
         onClick={() => navigate(-1)}
-        className="text-[var(--color-neon-blue)] hover:text-white mb-8 inline-block transition-colors flex items-center gap-2"
+        className="text-[var(--color-primary-bright)] hover:text-[var(--color-text-dark)] mb-8 inline-block transition-colors flex items-center gap-2"
       >
         &larr; Quay lại trang trước
       </button>
@@ -48,13 +48,13 @@ const ProductDetail = () => {
         </div>
 
         <div className="flex flex-col">
-          <div className="text-[var(--color-neon-blue)] font-bold tracking-widest mb-2 uppercase">{product.category?.name}</div>
+          <div className="text-[var(--color-primary-bright)] font-bold tracking-widest mb-2 uppercase">{product.category?.name}</div>
           <h1 className="text-4xl font-extrabold mb-4">{product.name}</h1>
-          <p className="text-3xl text-[var(--color-neon-purple)] font-bold mb-6">{product.price.toLocaleString('vi-VN')}₫</p>
+          <p className="text-3xl text-[var(--color-primary-muted)] font-bold mb-6">{product.price.toLocaleString('vi-VN')}₫</p>
 
           <div className="galaxy-card p-6 rounded-xl mb-6">
-            <h3 className="text-xl font-bold mb-3 border-b border-white/10 pb-2">Thông số cấu hình</h3>
-            <ul className="space-y-2 text-gray-300">
+            <h3 className="text-xl font-bold mb-3 border-b border-[var(--color-primary-muted)]/30 pb-2">Thông số cấu hình</h3>
+            <ul className="space-y-2 text-gray-700">
               <li><strong className="text-gray-100">CPU:</strong> {product.specifications?.cpu || 'Cập nhật sau'}</li>
               <li><strong className="text-gray-100">RAM:</strong> {product.specifications?.ram || 'Cập nhật sau'}</li>
               <li><strong className="text-gray-100">Card Đồ Họa:</strong> {product.specifications?.gpu || 'Cập nhật sau'}</li>
@@ -62,16 +62,16 @@ const ProductDetail = () => {
             </ul>
           </div>
 
-          <p className="text-gray-400 leading-relaxed mb-8">{product.description}</p>
+          <p className="text-gray-600 leading-relaxed mb-8">{product.description}</p>
 
           {/* Quantity Selector */}
           {product.countInStock > 0 && (
-            <div className="flex items-center gap-6 mb-8 pt-4 border-t border-white/5">
-              <span className="text-sm font-bold uppercase tracking-widest text-gray-400">Chọn số lượng:</span>
-              <div className="flex items-center bg-white/5 rounded-xl border border-white/10 overflow-hidden px-2 py-1">
+            <div className="flex items-center gap-6 mb-8 pt-4 border-t border-[var(--color-primary-muted)]/20">
+              <span className="text-sm font-bold uppercase tracking-widest text-gray-600">Chọn số lượng:</span>
+              <div className="flex items-center bg-[var(--color-primary-muted)]/5 rounded-xl border border-[var(--color-primary-muted)]/30 overflow-hidden px-2 py-1">
                 <button
                   onClick={() => setQty(prev => Math.max(1, prev - 1))}
-                  className="p-2 hover:text-[var(--color-neon-blue)] transition-colors"
+                  className="p-2 hover:text-[var(--color-primary-bright)] transition-colors"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
@@ -83,7 +83,7 @@ const ProductDetail = () => {
                 />
                 <button
                   onClick={() => setQty(prev => Math.min(product.countInStock, prev + 1))}
-                  className="p-2 hover:text-[var(--color-neon-blue)] transition-colors"
+                  className="p-2 hover:text-[var(--color-primary-bright)] transition-colors"
                 >
                   <Plus className="w-4 h-4" />
                 </button>

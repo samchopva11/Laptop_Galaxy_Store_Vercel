@@ -96,19 +96,19 @@ const Products = () => {
       {/* Sidebar Filter */}
       <div className="w-full md:w-1/4">
         <div className="galaxy-card p-6 rounded-xl sticky top-24">
-          <h3 className="text-xl font-bold mb-6 flex items-center gap-2 neon-text">
+          <h3 className="text-xl font-bold mb-6 flex items-center gap-2 neon-text text-[var(--color-primary-bright)]">
             <Filter className="w-5 h-5" /> Bộ Lọc Tìm Kiếm
           </h3>
 
           <form onSubmit={handleSearch} className="flex flex-col gap-5">
             {/* Tên */}
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Tên sản phẩm</label>
+              <label className="block text-sm text-gray-600 mb-1">Tên sản phẩm</label>
               <div className="relative">
                 <input
                   type="text" placeholder="Tìm galaxy..."
                   value={keyword} onChange={e => setKeyword(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg p-3 pl-10 focus:outline-none focus:border-[var(--color-neon-blue)] text-white"
+                  className="w-full bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-lg p-3 pl-10 focus:outline-none focus:border-[var(--color-primary-bright)] text-[var(--color-text-dark)]"
                 />
                 <Search className="w-4 h-4 absolute left-3 top-4 text-gray-500" />
               </div>
@@ -116,10 +116,10 @@ const Products = () => {
 
             {/* Hãng */}
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Hãng Laptop</label>
+              <label className="block text-sm text-gray-600 mb-1">Hãng Laptop</label>
               <select
                 value={category} onChange={e => setCategory(e.target.value)}
-                className="w-full bg-[#1a1625] border border-white/10 rounded-lg p-3 focus:outline-none text-white"
+                className="w-full bg-white border border-[var(--color-primary-muted)]/30 rounded-lg p-3 focus:outline-none text-[var(--color-text-dark)]"
               >
                 <option value="">Tất cả các hãng</option>
                 {categories.map(c => <option key={c._id} value={c._id}>{c.name}</option>)}
@@ -128,7 +128,7 @@ const Products = () => {
 
             {/* Huy Hiệu */}
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Loại Sản Phẩm</label>
+              <label className="block text-sm text-gray-600 mb-1">Loại Sản Phẩm</label>
               <div className="flex flex-wrap gap-2">
                 {['New', 'Best Seller', 'Hot'].map(b => (
                   <button
@@ -136,8 +136,8 @@ const Products = () => {
                     type="button"
                     onClick={() => setBadge(badge === b ? '' : b)}
                     className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all border ${badge === b
-                      ? 'bg-[var(--color-neon-purple)] border-[var(--color-neon-purple)] text-white'
-                      : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/30'
+                      ? 'bg-[var(--color-primary-muted)] border-[var(--color-primary-muted)] text-[var(--color-text-dark)]'
+                      : 'bg-[var(--color-primary-muted)]/5 border-[var(--color-primary-muted)]/30 text-gray-600 hover:border-white/30'
                       }`}
                   >
                     {b}
@@ -148,17 +148,17 @@ const Products = () => {
 
             {/* Khoảng Giá */}
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Mức Giá (VNĐ)</label>
+              <label className="block text-sm text-gray-600 mb-1">Mức Giá (VNĐ)</label>
               <div className="flex gap-2">
                 <input
                   type="text" placeholder="Từ"
                   value={tempMin} onChange={e => setTempMin(formatDisplayPrice(e.target.value))}
-                  className="w-1/2 bg-white/5 border border-white/10 rounded-lg p-2 focus:outline-none text-sm"
+                  className="w-1/2 bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-lg p-2 focus:outline-none text-sm"
                 />
                 <input
                   type="text" placeholder="Đến"
                   value={tempMax} onChange={e => setTempMax(formatDisplayPrice(e.target.value))}
-                  className="w-1/2 bg-white/5 border border-white/10 rounded-lg p-2 focus:outline-none text-sm"
+                  className="w-1/2 bg-[var(--color-primary-muted)]/5 border border-[var(--color-primary-muted)]/30 rounded-lg p-2 focus:outline-none text-sm"
                 />
               </div>
             </div>
@@ -179,7 +179,7 @@ const Products = () => {
                   setTempMin('');
                   setTempMax('');
                 }}
-                className="w-full text-xs bg-white/5 hover:bg-red-500/10 text-gray-400 hover:text-red-400 border border-white/10 hover:border-red-500/30 rounded-lg py-2 flex items-center justify-center gap-1 mt-4 transition-all"
+                className="w-full text-xs bg-[var(--color-primary-muted)]/5 hover:bg-red-500/10 text-gray-600 hover:text-red-400 border border-[var(--color-primary-muted)]/30 hover:border-red-500/30 rounded-lg py-2 flex items-center justify-center gap-1 mt-4 transition-all"
               >
                 Xóa tất cả bộ lọc
               </button>
@@ -190,36 +190,36 @@ const Products = () => {
 
       {/* Product List */}
       <div className="w-full md:w-3/4">
-        <h2 className="text-3xl font-bold mb-8 text-white">Kết quả Tìm Kiếm ({totalProducts})</h2>
+        <h2 className="text-3xl font-bold mb-8 text-[var(--color-text-dark)]">Kết quả Tìm Kiếm ({totalProducts})</h2>
 
         {loading ? (
-          <div className="text-center text-gray-400 py-20">Đang quét Radar...</div>
+          <div className="text-center text-gray-600 py-20">Đang quét Radar...</div>
         ) : products.length === 0 ? (
-          <div className="text-center text-gray-400 py-20 galaxy-card rounded-xl">Không có tín hiệu nào khớp với yêu cầu của bạn.</div>
+          <div className="text-center text-gray-600 py-20 galaxy-card rounded-xl">Không có tín hiệu nào khớp với yêu cầu của bạn.</div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
-              <div key={product._id} className="galaxy-card rounded-2xl overflow-hidden flex flex-col h-full group hover:shadow-[0_0_15px_var(--color-neon-purple)] transition-shadow">
+              <div key={product._id} className="galaxy-card rounded-2xl overflow-hidden flex flex-col h-full group hover:shadow-[0_0_15px_var(--color-primary-muted)] transition-shadow">
                 <Link to={`/product/${product._id}`} className="block flex-grow">
-                  <div className="h-48 bg-black/40 flex items-center justify-center relative p-4">
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-galaxy-dark)] to-transparent z-10 pointer-events-none"></div>
+                  <div className="h-48 bg-white/50 flex items-center justify-center relative p-4">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-light)] to-transparent z-10 pointer-events-none"></div>
                     <img src={product.image} alt={product.name} className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300" />
                     {product.badge && (
-                      <span className={`absolute top-2 left-2 z-20 px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest ${product.badge === 'New' ? 'bg-blue-600 animate-pulse' :
-                        product.badge === 'Hot' ? 'bg-red-600 animate-pulse' : 'bg-yellow-600 animate-pulse'
+                      <span className={`absolute top-2 left-2 z-20 px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest ${product.badge === 'New' ? 'bg-blue-600 animate-pulse text-white' :
+                        product.badge === 'Hot' ? 'bg-red-600 animate-pulse text-white' : 'bg-yellow-600 animate-pulse text-white'
                         }`}>
                         {product.badge}
                       </span>
                     )}
                   </div>
                   <div className="p-4 flex flex-col">
-                    <span className="text-xs font-bold text-[var(--color-neon-blue)] tracking-wider mb-1 uppercase">{product.category?.name}</span>
-                    <h3 className="text-md font-bold text-white line-clamp-2">{product.name}</h3>
+                    <span className="text-xs font-bold text-[var(--color-primary-bright)] tracking-wider mb-1 uppercase">{product.category?.name}</span>
+                    <h3 className="text-md font-bold text-[var(--color-text-dark)] line-clamp-2">{product.name}</h3>
                   </div>
                 </Link>
                 <div className="p-4 mt-auto">
-                  <div className="flex justify-between items-center bg-black/30 p-2 rounded-lg">
-                    <span className="text-lg font-bold text-[var(--color-neon-purple)]">
+                  <div className="flex justify-between items-center bg-[var(--color-primary-muted)]/10 p-2 rounded-lg">
+                    <span className="text-lg font-bold text-[var(--color-primary-muted)]">
                       {product.price.toLocaleString()}₫
                     </span>
                     <button
@@ -227,7 +227,7 @@ const Products = () => {
                         addToCart(product);
                         showToast(`Đã thêm "${product.name}" vào giỏ hàng!`);
                       }}
-                      className="px-3 py-2 bg-white/10 hover:bg-white/20 rounded text-sm font-bold transition-all"
+                      className="px-3 py-2 bg-[var(--color-primary-muted)]/10 hover:bg-[var(--color-primary-muted)]/20 rounded text-sm font-bold transition-all"
                     >
                       Thêm
                     </button>

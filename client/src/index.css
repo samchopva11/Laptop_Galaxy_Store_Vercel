@@ -3,45 +3,46 @@
 
 
 @theme {
-  --color-galaxy-dark: #0f0c29;
-  --color-galaxy-purple: #302b63;
-  --color-galaxy-light: #24243e;
-  --color-neon-blue: #00f3ff;
-  --color-neon-purple: #bc13fe;
+  --color-primary-bright: #C479FF;
+  --color-primary-muted: #A087B1;
+  --color-bg-light: #FEF7FF;
+  --color-bg-cream: #FEFEDF;
+  --color-text-dark: #2A1B38;
 }
 
 @layer base {
   body {
-    background: linear-gradient(135deg, var(--color-galaxy-dark), var(--color-galaxy-purple), var(--color-galaxy-light));
+    background: linear-gradient(135deg, var(--color-bg-light), var(--color-bg-cream));
     background-attachment: fixed;
-    color: white;
+    color: var(--color-text-dark);
     font-family: 'Lexend', sans-serif;
   }
 }
 
 @layer components {
   .galaxy-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(160, 135, 177, 0.3);
+    box-shadow: 0 8px 32px rgba(196, 121, 255, 0.15);
   }
 
   .neon-button {
-    background: linear-gradient(45deg, var(--color-neon-purple), var(--color-neon-blue));
+    background: linear-gradient(45deg, var(--color-primary-bright), var(--color-primary-muted));
     color: white;
     border: none;
-    box-shadow: 0 0 10px var(--color-neon-purple), 0 0 20px var(--color-neon-blue);
+    box-shadow: 0 0 10px rgba(196, 121, 255, 0.5), 0 0 20px rgba(160, 135, 177, 0.3);
     transition: all 0.3s ease-in-out;
   }
 
   .neon-button:hover {
-    box-shadow: 0 0 20px var(--color-neon-purple), 0 0 40px var(--color-neon-blue);
+    box-shadow: 0 0 20px rgba(196, 121, 255, 0.8), 0 0 40px rgba(160, 135, 177, 0.6);
     transform: scale(1.05);
   }
 
   .neon-text {
-    text-shadow: 0 0 5px var(--color-neon-blue), 0 0 10px var(--color-neon-purple);
+    color: var(--color-primary-bright);
+    text-shadow: 0 0 5px rgba(196, 121, 255, 0.5), 0 0 10px rgba(160, 135, 177, 0.3);
   }
 
   /* Animations mượt mà */
@@ -51,8 +52,8 @@
   }
 
   @keyframes glow-pulse {
-    0%, 100% { box-shadow: 0 0 10px var(--color-neon-blue); }
-    50% { box-shadow: 0 0 30px var(--color-neon-blue), 0 0 50px var(--color-neon-purple); }
+    0%, 100% { box-shadow: 0 0 10px rgba(196, 121, 255, 0.5); }
+    50% { box-shadow: 0 0 25px rgba(196, 121, 255, 0.8), 0 0 40px rgba(160, 135, 177, 0.5); }
   }
 
   .animate-float {

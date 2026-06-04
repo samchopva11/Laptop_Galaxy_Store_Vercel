@@ -54,8 +54,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         disabled={currentPage === 1}
         className={`p-2 rounded-xl border transition-all duration-300 ${
           currentPage === 1
-            ? 'border-white/5 text-gray-700 cursor-not-allowed'
-            : 'border-white/10 text-gray-300 hover:border-[var(--color-neon-blue)] hover:text-[var(--color-neon-blue)] hover:bg-[var(--color-neon-blue)]/5 active:scale-90'
+            ? 'border-[var(--color-primary-muted)]/20 text-gray-700 cursor-not-allowed'
+            : 'border-[var(--color-primary-muted)]/30 text-gray-700 hover:border-[var(--color-primary-bright)] hover:text-[var(--color-primary-bright)] hover:bg-[var(--color-primary-bright)]/5 active:scale-90'
         }`}
       >
         <ChevronLeft className="w-5 h-5" />
@@ -74,8 +74,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
               onClick={() => onPageChange(num)}
               className={`w-10 h-10 rounded-xl font-black text-sm transition-all duration-300 border ${
                 currentPage === num
-                  ? 'bg-gradient-to-br from-[var(--color-neon-purple)] to-[var(--color-neon-blue)] border-transparent text-white shadow-[0_0_15px_rgba(139,92,246,0.3)] scale-110'
-                  : 'border-white/10 bg-white/5 text-gray-400 hover:border-white/30 hover:bg-white/10 hover:text-white'
+                  ? 'bg-gradient-to-br from-[var(--color-primary-muted)] to-[var(--color-primary-bright)] border-transparent text-[var(--color-text-dark)] shadow-[0_0_15px_rgba(139,92,246,0.3)] scale-110'
+                  : 'border-[var(--color-primary-muted)]/30 bg-[var(--color-primary-muted)]/5 text-gray-600 hover:border-white/30 hover:bg-[var(--color-primary-muted)]/10 hover:text-[var(--color-text-dark)]'
               }`}
             >
               {num}
@@ -90,8 +90,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         disabled={currentPage === totalPages}
         className={`p-2 rounded-xl border transition-all duration-300 ${
           currentPage === totalPages
-            ? 'border-white/5 text-gray-700 cursor-not-allowed'
-            : 'border-white/10 text-gray-300 hover:border-[var(--color-neon-blue)] hover:text-[var(--color-neon-blue)] hover:bg-[var(--color-neon-blue)]/5 active:scale-90'
+            ? 'border-[var(--color-primary-muted)]/20 text-gray-700 cursor-not-allowed'
+            : 'border-[var(--color-primary-muted)]/30 text-gray-700 hover:border-[var(--color-primary-bright)] hover:text-[var(--color-primary-bright)] hover:bg-[var(--color-primary-bright)]/5 active:scale-90'
         }`}
       >
         <ChevronRight className="w-5 h-5" />
